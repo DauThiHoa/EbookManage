@@ -46,7 +46,7 @@ table {
 						<a href="${pageContext.request.contextPath}/admin/home">Home</a>
 						<i>|</i>
 					</li>
-					<li>All Orders</li>
+					<li>All Orders </li>
 				</ul>
 			</div>
 		</div>
@@ -79,7 +79,7 @@ table {
 				</div>	
 </c:if>
 <p id="mb">Slide Right to see full table.</p>
-<h3 class="text-center">All Orders</h3>
+<h3 class="text-center">All Orders </h3>
 	<table id="example" class="table table-hover table-bordered text-center">
 				<thead>
 					<tr>

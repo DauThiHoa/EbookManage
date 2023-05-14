@@ -33,7 +33,7 @@
 		<!-- //tittle heading -->
 		<div class="row">
 			<div class="col-lg-6 welcome-left">
-				<h3 style="color: orangered; font-weight: bold">About Store</h3>
+				<h3 style="color: #117a8b; font-weight: bold">About Store</h3>
 				<h4 class="my-sm-3 my-2">GrocSMART(Ebook General Store) is a low-price online Grocery store, which has many vital ranging products consumed in our everyday Breakfast, Meals & Dinners. We have Fresh Vegetables, Staples, Beverages, Personal care products & many other products needed daily. All the products on our
 					website are distinguished based on their categories, which gives you the hassle-free shopping experience ever with minimum time spent for your shopping.</h4>
 			</div>
@@ -42,13 +42,13 @@
 				<img src="${pageContext.request.contextPath}/images/img_1.png" class="img-fluid" alt=" ">
 			</div>
 			<div class="welcome-left">
-				<br><br><h3 class="text-left" style="color: orangered; font-weight: bold">&ensp;What We Do</h3>
+				<br><br><h3 class="text-left" style="color: #117a8b; font-weight: bold">&ensp;What We Do</h3>
 				<h4 class="my-sm-3" style="margin-left:15px;">We guarantee you the best quality products with the lowest price. Right now we only serve you in Thane. To have a more convenient shopping experience, for you we deliver your selected products at your doorstep at your selected time slot. As in today's era every person sense short in time & also its hard to find if the consumable products are healthy/natural. So to tackle this issue we serve you with the finest & hand-picked products from all the categories,
 					to save your time from the conventional shopping as well as
 					from the problems like getting stuck in long queues, the parking fees to be paid, carrying you heavy shopping bags & etc.</h4>
 			</div>
 			<div class="welcome-left">
-				<br><br><h3 class="text-left" style="color: orangered; font-weight: bold">&ensp;Our Vision</h3>
+				<br><br><h3 class="text-left" style="color: #117a8b; font-weight: bold">&ensp;Our Vision</h3>
 				<h4 class="my-sm-3" style="margin-left:15px;">
 					<li>Redefining India's freshest and finest food experience by 2020.</li>
 					<li>To provide a brighter customer experience with an assortment of finest local and international foods and highest level of service. </li>

@@ -34,33 +34,33 @@
 				<div class="contact-grids1 w3agile-6">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Name</label>
+							<label class="col-form-label" style="font-weight: bold">Name</label>
 							<input type="text" class="form-control" placeholder="Product Name" id="name" name="name" required="required">
 							<p id="error_name"></p>
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Description</label>
+							<label class="col-form-label" style="font-weight: bold">Description</label>
 							<textarea class="form-control" placeholder="Product Description" id="description" rows="3" cols="45" name="description" required="required"></textarea>
 							<p id="error_description"></p>
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Image</label>
+							<label class="col-form-label" style="font-weight: bold">Image</label>
 							<input type="file" class="form-control" placeholder="" name="image" id="image" required="required">
 							<p id="error_file"></p>
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">MRP Price</label>
+							<label class="col-form-label" style="font-weight: bold">MRP Price</label>
 							<input type="text" class="form-control" placeholder="MRP Price" name="mrp_price" id="mrp_price" required="required">
 							<p id="error_mrp_price"></p>
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Price</label>
+							<label class="col-form-label" style="font-weight: bold">Price</label>
 							<input type="text" class="form-control" placeholder="Price" name="price" id="price" required="required">
 							<p id="error_price"></p>
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label">Status</label>
-							<select name="active" id="active" class="form-control">
+							<label class="col-form-label" style="font-weight: bold">Status</label>
+							<select style="font-weight: bold" name="active" id="active" class="form-control">
 								<option value="true" selected="selected">Active</option>
 								<option value="false">In-Active</option>
 							</select>
@@ -68,7 +68,8 @@
 						</div>	
 					</div>
 						<div class="right-w3l col-md-6">
-							<input type="button" style="background-color: #0879c9;" id="submit" class="btn btn-primary form-control" value="Submit">
+							<input type="button"
+								   style="background-color: #117a8b;" id="submit" class="btn btn-primary form-control" value="Submit">
 						</div>
 				</div>
 			</form>

@@ -222,9 +222,9 @@ public class CustomerController {
 						String url = (String) session.getAttribute("backUrl");
 						log.info("in Login, backUrl :: "+url);
 						if (url != null) {
-							if (url.contains("8888")) {
-								log.info("In 8888");
-								String[] newUrl = url.split("8888");
+							if (url.contains("8081")) {
+								log.info("In 8081");
+								String[] newUrl = url.split("8081");
 								String backUrl = newUrl[1];
 								log.info("Back Url: " + backUrl);
 								session.removeAttribute("url");

@@ -44,7 +44,8 @@
 					<div class="wrapper">
 						<!-- first section -->
 						<div class="px-sm-4 px-3 py-sm-5 py-3 mb-4">
-							<h3 class="heading-tittle text-center font-italic">Search Result</h3>
+							<h3 class="heading-tittle text-center font-italic"
+								style="margin-top: -5%">Search Result</h3>
 							<div class="row">
 						<c:choose>
 							<c:when test="${not empty products}">
