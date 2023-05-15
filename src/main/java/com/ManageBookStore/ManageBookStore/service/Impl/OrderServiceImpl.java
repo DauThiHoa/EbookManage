@@ -20,6 +20,7 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderRepository orderRepository;
 
+//	Them san pham
 	@Override
 	public boolean saveProductOrder(Order order) {
 		boolean status = false;
@@ -30,22 +31,26 @@ public class OrderServiceImpl implements OrderService {
 		return status;
 	}
 
+//	 truy xuất tất cả các đơn đặt hàng được liên kết với một khách hàng cụ thể
 	@Override
 	public List<Order> getAllOrdersByCustomer(String customerEmail) {
 		return orderRepository.findAllOrdersByCustomer(customerEmail);
 	}
 
+//	xóa các đơn đặt hàng dựa trên số thứ tự
 	@Override
 	public void deleteOrdersByNum(int orderNum) {
 		orderRepository.removeOrdersByNum(orderNum);	
 	}
 
+//	truy xuất ID đơn đặt hàng được liên kết với email của khách hàng
 	@Override
 	public Set<Long> getOrderIdByEmail(String customerEmail) {
 		// TODO Auto-generated method stub
 		return orderRepository.findOrderIdByEmail(customerEmail);
 	}
 
+//	lưu đơn đặt hàng vao trong cơ sở dữ liệu
 	@Override
 	public boolean saveCartOrder(int orderNum, String customerName, String customerEmail, String customerPhone,
 			String customerAddress, String customerAddressType, double amount, boolean active, Date orderDate) {
@@ -56,22 +61,26 @@ public class OrderServiceImpl implements OrderService {
 		return status;
 	}
 
+//	truy xuất ID đơn đặt hàng được liên kết với một số đơn đặt hàng cụ thể
 	@Override
 	public Long getOrderIdByNum(int orderNum) {
 		return orderRepository.findOrderIdByNum(orderNum);
 	}
 
+//	lưu nhiều đơn đặt hàng cùng một lúc
 	@Override
 	public void saveOrders(List<Order> orders) {
 		orderRepository.saveAll(orders);
 		
 	}
 
+//	lấy các đơn đặt hàng cuối cùng từ cơ sở dữ liệu, được phân trang và sắp xếp theo chỉ định của đối tượng pageable
 	@Override
 	public List<Order> getLastOrderByIdDesc(Pageable pageable) {
 		return orderRepository.getLastOrder(pageable);
 	}
 
+//	dễ dàng truy xuất số lượng đơn đặt hàng
 	@Override
 	public Long getOrdersCount() {
 		return orderRepository.count();

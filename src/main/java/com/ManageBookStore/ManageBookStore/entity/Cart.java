@@ -31,15 +31,18 @@ public class Cart {
 	
 	@Column(name = "price", nullable = false)
 	private double price;
-	
+
+//	@OneToOne => mỗi thực thể Cartđược liên kết với một thực thể Customer
 	@OneToOne
 	@JoinColumn(name = "customer_id", nullable = false, foreignKey = @ForeignKey(name = "CART_CUST_FK") )
 	@JsonIgnore
 	private Customer customer;
 
+//	@ManyToOne => nhiều Cartmục có thể được liên kết với một Product
 	@ManyToOne(fetch = FetchType.LAZY)
 	//@Cascade({ org.hibernate.annotations.CascadeType.ALL })
     @JoinColumn(name = "product_id", nullable = false, foreignKey = @ForeignKey(name = "CART_PROD_FK") )
+//	chỉ định cột nối giữa hai thực thể. Trong trường hợp này, cột tham gia được đặt tên product_id
 	@JsonIgnore
 	private Product product;
 

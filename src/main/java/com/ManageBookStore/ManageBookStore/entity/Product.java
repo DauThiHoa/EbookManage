@@ -14,6 +14,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+// Hien thuc bang product
 @Entity
 @Table(name = "product")
 public class Product {
@@ -35,7 +36,11 @@ public class Product {
 	@Size(min = 2, max = 1000, message = "Product description must be between 2 and 1000 characters.")
 	@Column(name = "description", nullable = false)
 	private String description;	
-	
+
+//	Cot gia cu co ten la mrp_price
+//	Gia tri ko cho phep null
+//  precision => tính chỉ định tổng số chữ số có thể được lưu trữ trong cột ( cột có thể lưu tối đa 10 chữ số )
+//	scale => cột có thể lưu tối đa 2 chữ số sau dấu thập phân
 	@Column(name = "mrp_price", nullable = false, precision = 10, scale = 2)
     private double mrpPrice;
 	
@@ -49,7 +54,8 @@ public class Product {
     
 	@Column(name = "active", nullable = false)
 	private Boolean active;
-	
+
+//	Ngay tao san pham
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date", nullable = false)
     private Date createDate;
@@ -128,6 +134,7 @@ public class Product {
 		this.createDate = createDate;
 	}
 
+//	ToString
 	@Override
 	public String toString() {
 		return "Product [id=" + id + ", code=" + code + ", name=" + name + ", description=" + description

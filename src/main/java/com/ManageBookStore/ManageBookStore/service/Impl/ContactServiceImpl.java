@@ -36,10 +36,12 @@ public class ContactServiceImpl implements ContactService {
 
 		if (contact != null) {
 			MimeMessage message = emailSender.createMimeMessage();
-			// use the true flag to indicate you need a multipart message
+			// Nó tạo một MimeMessageđối tượng mới bằng cách sử dụng emailSenderthể hiện.
+			// Đối tượng này được sử dụng để xây dựng thông điệp email.
 			MimeMessageHelper helper = new MimeMessageHelper(message, true);
 			String content = "Hi, <b>" + contact.getName()
 					+ "</b> has contacted you. Below are the details of his/her message.<br>";
+//			đặt chủ đề của email thành giá trị được lấy từ đối contacttượng.
 			helper.setSubject(contact.getSubject());
 			helper.setText(content + " <b>Name: </b> " + contact.getName() + "<br>" + "" + "<b>Email: </b> "
 					+ contact.getEmail() + "<br>"
@@ -47,7 +49,7 @@ public class ContactServiceImpl implements ContactService {
 					+ contact.getMessage(), true); // set to html
 			helper.setFrom(contact.getEmail());
 			helper.setTo(env.getProperty("spring.mail.username"));
-			//helper.addCc(env.getProperty("mailToCc"));
+			// gửi thông điệp email được xây dựng bằng cách sử dụng emailSenderđối tượng
 			emailSender.send(message);
 
 			contactRepository.save(contact);

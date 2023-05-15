@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 
+// @UniqueConstraint(columnNames = "order_num" => một ràng buộc duy nhất được xác định trên cột "order_num". Điều này
+// có nghĩa là cột "order_num" phải có các giá trị duy nhất trong bảng
 @Entity
 @Table(name = "orders", uniqueConstraints = { @UniqueConstraint(columnNames = "order_num") })
 public class Order {

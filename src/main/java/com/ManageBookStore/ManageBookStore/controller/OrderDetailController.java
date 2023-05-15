@@ -30,19 +30,25 @@ public class OrderDetailController {
 	
 	@Autowired
 	private OrderService orderService;
-	
+
+//	xử lý yêu cầu hiển thị đơn đặt hàng của khách hàng
 	@GetMapping("/my-orders")
 	String showCustomerOrders(HttpServletRequest request, Order order, HttpSession session, Model model) {
 		try {
 			session = request.getSession(false);
+//			truy xuất email của khách hàng
 			String customerEmail = (String) session.getAttribute("email");
 			if (customerEmail == null) {
 				return "redirect:/home";
 			}
+//			 truy xuất một bộ ID đơn đặt hàng được liên kết với email của khách hàng. ID đơn đặt hàng
 			Set<Long> orderIds = orderService.getOrderIdByEmail(customerEmail);
+//			truy xuất danh sách OrderDetailcác đối tượng được liên kết với ID đơn đặt hàng và email của khách hàng
 			List<OrderDetail> ordersList = orderDetailService.getAllOrdersOrderId(orderIds, customerEmail);
+//			ghi lại kích thước của orderIdstập hợp và ordersListdanh sách
 			log.info("orderIds size = "+orderIds.size());
 			log.info("ordersList size = "+ordersList.size());
+//			thêm the ordersListvào Model
 			model.addAttribute("orders", ordersList);
 			return "my-orders";
 		} catch (Exception e) {

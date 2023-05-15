@@ -45,11 +45,13 @@ public class OrderController {
 			@RequestParam("customerPhone") String customerPhone, @RequestParam("address") String customerAddress,
 			@RequestParam("addressType") String customerAddressType, @RequestParam("pinCode") String pinCode, HttpServletRequest request, HttpSession session,
 			Order order, OrderDetail od, Product product, Model model) {
+// Khai báo biến
 		int x, y, orderNum, paymentId;
 		x = y = orderNum = paymentId = 0;
 		try {
 			session = request.getSession(false);
 			String customerEmail = (String) session.getAttribute("email");
+			// Kiểm tra xem có email của khách hàng co ton tai hay khong
 			if (customerEmail == null) {
 				return "redirect:/home";
 			}
@@ -77,6 +79,8 @@ public class OrderController {
 				paymentId = orderList.get(0).getPaymentId() + 1;
 				log.info("In else, OrderNum :: "+orderNum+" Payment Id :: "+paymentId);
 			}
+
+//			// Đặt giá trị cho thực thể đơn hàng
 			order.setOrderNum(orderNum);
 			order.setCustomerName(customerName);
 			order.setCustomerEmail(customerEmail);
@@ -87,10 +91,14 @@ public class OrderController {
 			order.setAmount(amount);
 			order.setActive(active);
 			order.setOrderDate(orderDate);
+
+//			Luu don hang
 			boolean status = orderService.saveProductOrder(order);
 			if (status) {
 				x = 1;
 				log.info("order saved. x = " + x);
+
+				// Đặt giá trị cho thực thể chi tiết đơn hàng
 				Order o = new Order();
 				o.setOrderNum(orderNum);
 				od.setOrder(order);
@@ -102,10 +110,14 @@ public class OrderController {
 				od.setAmount(totalAmount);
 				od.setPaymentId(paymentId);
 				od.setOrderStatus(orderStatus);
+
+				// Lưu chi tiết đơn hàng
 				boolean flag = orderDetailService.saveOrderDetail(od);
 				if (flag) {
 					y = 1;
 					log.info("order detail saved. y = " + y);
+
+					// Đặt thuộc tính cho model
 					model.addAttribute("orderDate", orderDate);
 					model.addAttribute("totalAmount", totalAmount);
 					model.addAttribute("paymentId", paymentId);
@@ -113,17 +125,22 @@ public class OrderController {
 					model.addAttribute("success", "success");
 				}
 			}
+			// Chuyển hướng đến chế độ xem "thanh toán"
 			return "payment";
 		} catch (Exception e) {
 			e.printStackTrace();
+
+			// Phục hồi đơn hàng và chi tiết đơn hàng nếu xảy ra ngoại lệ
 			if (x == 0) {
 				orderService.deleteOrdersByNum(orderNum);
 				log.info("deleting from orders table. " + x);
 			}
+
 			if (y == 0) {
 				orderDetailService.deleteOrderDetailByNum(paymentId);
 				log.info("deleting from order_detail table. " + y);
 			}
+			// Đặt thuộc tính cho lỗi và chuyển hướng đến chế độ xem "thanh toán"
 			model.addAttribute("error", "error");
 			return "payment";
 		}

@@ -32,6 +32,8 @@ import com.ManageBookStore.ManageBookStore.entity.Product;
 import com.ManageBookStore.ManageBookStore.exception.MyResourceNotFoundException;
 import com.ManageBookStore.ManageBookStore.service.ProductAdmService;
 import com.ManageBookStore.ManageBookStore.service.ProductService;
+
+// Lop xu ly phia Admin
 @Controller
 @RequestMapping("/admin/product")
 public class ProductAdmController {
@@ -47,23 +49,29 @@ public class ProductAdmController {
 	@Autowired
 	ProductAdmService productAdmSer;
 
+//	Hien thi trang them san pham
 	@GetMapping("/add")
 	public String addProduct(HttpSession session) {
+//		Lay dia chi mail nguoi dung
 		String aemail = (String) session.getAttribute("aemail");
 		if(aemail == null) {
+//			Neu chua co dang nhap thi chuyen huong sang trang home
 			return "redirect:/home";
 		}
 		return "add_product";
 	}
 
+//	Hien thi trang chinh sua san pham
 	@GetMapping("/edit/{code}")
 	public String editProduct(@PathVariable("code") String code, Product product, Model map, HttpSession session) {
 		String aemail = (String) session.getAttribute("aemail");
 		if(aemail == null) {
 			return "redirect:/home";
 		}
+//		Lay San Pham theo ma code
 		product = productService.getProductByCode(code);
 		if (product != null) {
+//			Hien thi cac thong tin san pham vao trang
 			map.addAttribute("code", code);
 			map.addAttribute("product", product);
 			return "edit_product";
@@ -72,6 +80,7 @@ public class ProductAdmController {
 		return "edit_product";
 	}
 
+//	Them san pham
 	@PostMapping("/saveProduct")
 	public @ResponseBody ResponseEntity<?> createProduct(@RequestParam("name") String name,
 			@RequestParam("active") String status, @RequestParam("price") double price, @RequestParam("mrp_price") double mrpPrice,
@@ -79,6 +88,7 @@ public class ProductAdmController {
 			final @RequestParam("image") MultipartFile file) {
 		try {
 			// String uploadDirectory = System.getProperty("user.dir") + uploadFolder;
+//			Lay dia chi hinh anh
 			String uploadDirectory = request.getServletContext().getRealPath(uploadFolder);
 			log.info("uploadDirectory:: " + uploadDirectory);
 			String fileName = file.getOriginalFilename();
@@ -132,6 +142,8 @@ public class ProductAdmController {
 			product.setDescription(descriptions[0]);
 			product.setActive(active);
 			product.setCreateDate(createDate);
+
+//			Them san pham
 			boolean flag = productService.saveProduct(product);
 			if (flag) {
 				log.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
@@ -145,17 +157,20 @@ public class ProductAdmController {
 		}
 	}
 
+//	Hien thi trang tat ca cac san pham
 	@GetMapping("/view")
 	public String view(Model map, HttpServletRequest request,HttpSession session) {
 		String aemail = (String) session.getAttribute("aemail");
 		if(aemail == null) {
 			return "redirect:/home";
 		}
+//		them tat ca cac san pham vao model => Chuyen trang sang admin product
 		List<Product> productList = productService.getAllActiveProducts();
 		map.addAttribute("product", productList);
 		return "admin_product_view";
 	}
 
+//	Xoa san pham
 	@GetMapping("/delete/{id}/{fileName}")
 	public String deleteProduct(@PathVariable("id") Long pid, @PathVariable("fileName") String fileName,
 			HttpServletRequest request, HttpSession session, RedirectAttributes rda) {
@@ -207,6 +222,7 @@ public class ProductAdmController {
 		return "redirect:/admin/product/view";
 	}
 
+//	Chinh sua thong tin san pham
 	@PostMapping("/editProduct")
 	public @ResponseBody ResponseEntity<?> updateProduct(@RequestParam("name") String name,
 			@RequestParam("active") String status, @RequestParam("price") double price, @RequestParam("mrp_price") double mrpPrice,
@@ -219,6 +235,8 @@ public class ProductAdmController {
 				//String uploadDirectory = request.getServletContext().getRealPath(uploadFolder);
 				log.info("In If Empty File:: "+imageData);
 			} else {
+//				Bên trong phương thức, nó kiểm tra xem có filetrống không. Nếu có, nó sẽ truy xuất imageDatathuộc tính
+//				phiên. Nếu không, nó sẽ xử lý tệp đã tải lên.
 				log.info("In Else With File");
 				String uploadDirectory = request.getServletContext().getRealPath(uploadFolder);
 				log.info("uploadDirectory:: " + uploadDirectory);
@@ -254,6 +272,9 @@ public class ProductAdmController {
 			log.info("Product Updated With Code : "+code);
 			session.removeAttribute("code");
 			session.removeAttribute("imageData");
+
+//			Nếu cập nhật thành công, nó sẽ trả về một thực thể phản hồi với thông báo "Sản phẩm được cập nhật thành công"
+//			và trạng thái HTTP OK.
 			return new ResponseEntity<>("Product Updated Successfully.", HttpStatus.OK);
 		} catch (Exception e) {
 			e.printStackTrace();

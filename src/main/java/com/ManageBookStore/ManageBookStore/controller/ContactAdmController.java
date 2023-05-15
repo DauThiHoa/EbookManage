@@ -22,7 +22,8 @@ public class ContactAdmController
 	
 	@Autowired
 	ContactAdmService contactAdmSer;
-	
+
+//	tìm nạp danh sách các liên hệ và thêm nó vào mô hình để hiển thị trong chế độ xem "admin_contact_view"
 	@GetMapping("/view")
 	public String getContactList(Model map)
 	{
@@ -33,8 +34,12 @@ public class ContactAdmController
 	
 	@GetMapping("/delete/{id}")
 	public String deleteContact(@PathVariable("id") Long id, RedirectAttributes map) {
-			log.info("Contact id :: "+id);
+//		ghi lại ID của liên hệ sẽ bị xóa
+		log.info("Contact id :: "+id);
+//		gọi deleteContactphương thức trên contactAdmSerđối tượng (dịch vụ quản trị liên hệ) để xóa liên hệ có ID đã chỉ định
 			contactAdmSer.deleteContact(id);
+//			thêm một thuộc tính flash với tên "delete" và giá trị "d". Thuộc tính flash này có thể
+//			được truy cập trong chế độ xem được chuyển hướng
 			map.addFlashAttribute("delete", "d");
 			return "redirect:/admin/contact/view";
 	}

@@ -33,19 +33,24 @@ public class ProductController {
 	private ProductService productService;
 
 	private static final Logger log = LoggerFactory.getLogger(ProductController.class);
-	
+
+//	code => Ma san pham => Lay SP => Theo ma code ( P1, P2,.. )
 	@GetMapping("/productdetails")
 	String showProductDetails(@RequestParam("code") String code, Product product,
 			Model model) {
 		try {
 			log.info("Code :: " + code);
+//			Neu Code != null & Bat dau bang chu cai "P"
 			if (code != null && code.startsWith("P")) {
+//				Lay SP theo ma code
 				product = productService.getProductByCode(code);
 				log.info("products :: " + product);
+//				Neu co SP => Dua thong tin SP => Den trang chi tiet san pham voi ma code
 				if (product != null) {
 					model.addAttribute("product", product);
 					return "productdetails";
 				}
+//				Neu khong co thi chuyen sang trang Home
 				return "redirect:/home";
 			}
 		return "redirect:/home";
@@ -55,6 +60,8 @@ public class ProductController {
 		}	
 	}
 
+//	Hien thi tat ca cac SP voi status = Active ( Hien thi )
+//	=> Chuyen sang trang product_all
 	@GetMapping("/all")
 	String show(Model map) {
 		List<Product> product = productService.getAllActiveProducts();
@@ -62,27 +69,35 @@ public class ProductController {
 		return "product_all";
 	}
 
+//	Tim kiem san pham theo ten hoac SP co gia nho hon hoac bang gia nhap vao
 	@PostMapping("/search")
 	String searchProducts(@RequestParam(value = "keyword", required = true) String keyword, Model model) {
 		try {
 			if (keyword != null) {
 				List<Product> products = productService.searchProducts(keyword.trim());
 				log.info("products :: "+products);
+//				Them san pham vao Model => Chuyen trang search
 				model.addAttribute("products", products);
 				return "search";
 			}
+//			Neu khong co kq phu hop chuyen sang trang home
 			return "redirect:/home";
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "redirect:/home";
 		}
 	}
-	
+
+//	Dat hang
 	@PostMapping("/checkout")
-	String productCheckout(@RequestParam("code") String code,HttpServletRequest request, HttpSession session, Product product, Model model) {
+	String productCheckout(@RequestParam("code") String code,HttpServletRequest request, HttpSession session,
+						   Product product, Model model) {
 		try {
 			session = request.getSession(false);
 			String email = (String) session.getAttribute("email");
+
+//			Neu chua dang nhap => Ve trang Login => Dang nhap de xem cac san pham trong gio hang
+//			=> Thuc hien dang nhap
 			if(email == null) {
 				String backUrl = request.getHeader("referer");
 				log.info("backUrl :: "+backUrl);
@@ -90,10 +105,13 @@ public class ProductController {
 				return "redirect:/customer/login";
 			}
 			log.info("Code :: "+code);
+//			Lay ma code cua san pham
 			if (code != null && code.startsWith("P")) {
+//				Lay san pham trung voi ma code duoc truyen vao
 				product = productService.getProductByCode(code);
 				log.info("product :: " + product.getName());
 				if (product != null) {
+//					Chuyen du lieu cac san pham vao trang checkout => Gio hang
 					model.addAttribute("code", code);
 					model.addAttribute("image", product.getImage());
 					model.addAttribute("itemName", product.getName());

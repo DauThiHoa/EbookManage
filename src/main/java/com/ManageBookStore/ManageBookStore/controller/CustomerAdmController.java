@@ -19,16 +19,19 @@ public class CustomerAdmController
 {
 	@Autowired
 	UserAdmService userAdmSer;
-	
+
+//	danh sách khách hàng để hiển thị thông tin liên quan cho quản trị viên
 	@GetMapping("/view")
 	public String customerView(Model map)
 	{
+//		lấy danh sách khách hàng bằng cách gọi getAllCustomerphương thức trên userAdmSerđối tượng (dịch vụ quản trị người dùng)
 		List<Customer> customerList = userAdmSer.getAllCustomer();
 		map.addAttribute("customer", customerList);
 		return "admin_customer_view";
 		
 	}
-	
+
+//	xóa một khách hàng có ID đã cho và chuyển hướng quản trị viên đến trang xem khách hàng
 	@GetMapping("/delete/{id}")
 	public String deleteProduct(@PathVariable("id") Long pid, RedirectAttributes map)
 	{

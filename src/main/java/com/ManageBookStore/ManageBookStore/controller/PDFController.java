@@ -40,7 +40,8 @@ public class PDFController {
 	
 	@Value("${store_pin}")
 	private String storePin;
-	
+
+//	thêm một số dòng trống được chỉ định vào một đoạn văn nhất định
 	void addEmptyLine(Paragraph paragraph, int number) {
 		for (int i = 0; i < number; i++) {
 			paragraph.add(new Paragraph(" "));
@@ -58,8 +59,12 @@ public class PDFController {
 			session = request.getSession(false);
 			String email = (String) session.getAttribute("email");
 			if (email != null) {
+//				truy xuất giá trị của thuộc tính "paymentId"
 				orderNumber = (Integer) session.getAttribute("paymentId");
+//				ghi lại giá trị của việc orderNumbersử dụng một logger
 				log.info("orderNumber : " + orderNumber);
+
+//				Các thuộc tính này được coi là đã được đặt trước đó trong phiên và được sử dụng để thu thập thông tin về đơn đặt hàng
 				List<OrderDetail> list = orderDetailService.getOrderByPayId(orderNumber);
 				double totalAmount = (Double) session.getAttribute("totalAmount");
 				double totalMrp = (Double) session.getAttribute("totalMrp");
@@ -72,29 +77,43 @@ public class PDFController {
 				String address = (String) session.getAttribute("address");
 				String pinCode = (String) session.getAttribute("pinCode");
 				log.info("name " + name + " orderDate " + orderDate + " phone " + phone + " address " + address);
+//				truy xuất đường dẫn thực của đối tượng được chỉ định uploadFoldertừ ngữ cảnh servlet của tệp HttpServletRequest
 				String uploadDirectory = request.getServletContext().getRealPath(uploadFolder);
 				File dir = new File(uploadDirectory);
+//				kiểm tra xem thư mục được chỉ định bởi dirkhông tồn tại.
 				if (!dir.exists()) {
 					log.info("Folder Created");
+//					tạo thư mục được chỉ định bởi dir
 					dir.mkdirs();
 				}
-				// String imgFIle = uploadDirectory + File.separator + imgName;
-				// now write the PDF content to the output stream
+//				tạo ra một ByteArrayOutputStreamđối tượng mới và gán nó cho outputStreambiến
 				outputStream = new ByteArrayOutputStream();
+//				tạo một Documentđối tượng mới từ thư viện iText PDF
 				Document document = new Document();
+//				nội dung PDF sẽ được ghi vào tệp outputStream
 				PdfWriter.getInstance(document, outputStream);
 				document.open();
+//				 tạo một Fontđối tượng được đặt tên smallBoldvới họ phông chữ, kích thước và kiểu (đậm) đã chỉ định
 				Font smallBold = new Font(Font.FontFamily.TIMES_ROMAN, 10, Font.BOLD);
+//				Dat ten - tieu de - tac gia
 				document.addTitle(storeName);
 				document.addAuthor(storeName);
 				document.addCreator(storeName);
+//				 chứa nội dung được thêm vào tài liệu
 				Paragraph p = new Paragraph();
 				p.add(new Paragraph(storeName, smallBold));
+
+//				đặt căn lề của pđoạn văn được căn giữa
 				p.setAlignment(Element.ALIGN_CENTER);
+//				thêm một đường chấm chấm vào PDF.
 				DottedLineSeparator dottedline = new DottedLineSeparator();
+//				đặt độ lệch của đường chấm chấm so với vị trí hiện tại. Một phần bù âm di chuyển dòng lên trên
 		        dottedline.setOffset(-2);
+//				đặt khoảng cách giữa các dấu chấm trong đường chấm chấm
 		        dottedline.setGap(2f);
 		        p.add(dottedline);
+
+//				gọi hàm thêm dòng trống vào pđoạn văn
 		        addEmptyLine(p, 1);
 				document.add(p);
 				Paragraph p1 = new Paragraph();
@@ -125,11 +144,15 @@ public class PDFController {
 				p3.setAlignment(Element.ALIGN_LEFT);
 				addEmptyLine(p3, 2);
 				document.add(p3);
+
+//				tạo một mảng có tên headerschứa các tiêu đề cột cho bảng PDF
 				String[] headers = new String[] { "SR. No.", "Item Name", "Qty.", "MRP (Rs,)", "Selling Price (Rs.)",
 						"Total Price (Rs.)", "Total Savings (Rs.)" };
+//				tạo ra một đối tượng mới được đặt tên tablevới một số cột được chỉ định bằng với độ dài của headersmảng
 				PdfPTable table = new PdfPTable(headers.length);
 				Font fontHeader = new Font(Font.FontFamily.TIMES_ROMAN, 8, Font.BOLD);
 				for (String header : headers) {
+//					 tạo ra một đối tượng mới PdfPCellcó tên cell
 					PdfPCell cell = new PdfPCell();
 					cell.setGrayFill(0.9f);
 					cell.setPhrase(new Phrase(header.toUpperCase(), fontHeader));

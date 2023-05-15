@@ -36,7 +36,9 @@
 		<div class="d-flex justify-content-center h-100">
 			<div class="row">
 				<div class="col-md-12">
+<%--					backUrl => Chuyen trang san pham --%>
 				<c:if test="${not empty backUrl}"><center><h4 class="text-center" style="color:red;">Login First</h4><hr></center></c:if>
+<%--				${pageContext.request.contextPath} => ???ng d?n ng? c?nh ??i di?n cho URL c? s? c?a ?ng d?ng web --%>
 					<form:form action="${pageContext.request.contextPath}/customer/loginCustomer" modelAttribute="customerLoginForm" method="post" class="validatedForm">
 						<div class="contact-form1 form-group">
 								<label class="col-form-label">Email</label>

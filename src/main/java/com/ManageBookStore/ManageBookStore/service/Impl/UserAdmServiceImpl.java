@@ -20,6 +20,7 @@ public class UserAdmServiceImpl implements UserAdmService
 	@Autowired
 	UserAdmRepository userAdmRepo;
 
+//	truy xuất khách hàng theo ID của họ từ kho lưu trữ userAdmRepo
 	@Override
 	public Optional<Customer> getCustomerId(Long pid)
 	{
@@ -27,6 +28,7 @@ public class UserAdmServiceImpl implements UserAdmService
 		return userAdmRepo.findById(pid);
 	}
 
+//	truy xuất tất cả khách hàng từ kho lưu trữ userAdmRepo
 	@Override
 	public List<Customer> getAllCustomer()
 	{
@@ -34,6 +36,7 @@ public class UserAdmServiceImpl implements UserAdmService
 		return userAdmRepo.findAll();
 	}
 
+//	Xoa 1 khach hang vs id
 	@Override
 	public void deleteCustomer(Long pid) 
 	{
@@ -41,6 +44,7 @@ public class UserAdmServiceImpl implements UserAdmService
 		
 	}
 
+//	Xoa danh sach khach hang
 	@Override
 	public void deleteAll(List<Customer> ids) 
 	{

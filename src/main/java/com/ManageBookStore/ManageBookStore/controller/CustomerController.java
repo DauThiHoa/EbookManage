@@ -68,6 +68,8 @@ public class CustomerController {
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 
+//	 truy cập vào môi trường của ứng dụng và
+//	 truy xuất các thuộc tính hoặc thực hiện các thao tác khác liên quan đến môi trường trong lớp
 	@Autowired
 	private Environment env;
 
@@ -83,6 +85,8 @@ public class CustomerController {
 		return "register";
 	}
 
+//	Đối tượng ModelAndView đóng gói cả dữ liệu mô hình và thông tin dạng xem. Nó cung cấp các phương thức để thiết lập
+//	và truy xuất dữ liệu mô hình và tên khung nhìn.
 	@GetMapping("/forgot-password")
 	public ModelAndView CustomerForgotPasswordPage(Customer Customer) {
 		return new ModelAndView("forgot-password", "forgot-password", Customer);
@@ -98,48 +102,67 @@ public class CustomerController {
 			@RequestParam("token") String token, @RequestParam("data") String data) {
 		log.info("In change-password ...");
 		if (encodedEmail == null || token == null || data == null) {
-			return new ModelAndView("redirect:/page404");
+			return new ModelAndView("redirect:/page404"); // Hien thi trang loi
 		}
+//		Giải mã encodedEmail chuỗi từ mã hóa Base64 thành một mảng byte
 		byte[] decodedBytes = Base64.getDecoder().decode(encodedEmail);
+
+//		Chuyển đổi mảng byte đã giải mã thành biểu diễn Chuỗi của email.
 		String email = new String(decodedBytes);
-		Customer emailExist = customerService.findCustomerByEmail(email);
+
+//		truy xuất khách hàng bằng email đã cho bằng cách sử dụng tệp customerService
+		Customer emailExist = customerService.findCustomerByEmail(email);  // Lay khach hang co mail
 		if (emailExist == null) {
 			return new ModelAndView("redirect:/page404");
 		} else {
+//			 Giải mã datachuỗi từ mã hóa Base64 thành một mảng byte.
 			byte[] decodedTime = Base64.getDecoder().decode(data);
+//			Chuyển đổi mảng byte được giải mã thành chuỗi biểu diễn thời gian
 			String time = new String(decodedTime);
 			Date todayDateTime = new Date();
+//			Tạo một SimpleDateFormatđối tượng với định dạng ngày được chỉ định
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//			Định dạng ngày và giờ hiện tại thành một chuỗi sử dụng định dạng ngày đã chỉ định
 			String dataTime = sdf.format(todayDateTime);
 			log.debug("time = " + time + " emailTime = " + time + " dataTime = " + dataTime);
 			Date d1 = null;
 			Date d2 = null;
 			try {
+//				Phân tích cú pháp timevà dataTimechuỗi thành Datecác đối tượng sử dụng định dạng ngày đã chỉ định
 				d1 = sdf.parse(time);
 				d2 = sdf.parse(dataTime);
 			} catch (ParseException e) {
 				e.printStackTrace();
 				return new ModelAndView("redirect:/page404");
 			}
+//			Tính chênh lệch tính bằng mili giây giữa d2và d1
 			long diff = d2.getTime() - d1.getTime();
+//			Tính chênh lệch về số giờ bằng cách chia chênh lệch tính bằng mili giây cho số mili giây trong một giờ
 			long diffHours = diff / (60 * 60 * 1000);
 			log.debug("dataTime = " + d1 + " currTime = " + d2 + " Diff=" + diff + " emailExpireTime=" + timeInHours
 					+ " diffHours=" + diffHours);
 			if (diffHours >= timeInHours) {
 				log.info("Time expired.");
+//				Kiểm tra xem chênh lệch về số giờ có lớn hơn hoặc bằng ngưỡng được xác định trước (timeInHours)
+//				hay không. Nếu vậy, điều đó có nghĩa là thời hạn đã hết
 				return new ModelAndView("redirect:/page404");
 			}
 		}
 		return new ModelAndView("change-password");
 	}
 
+//	Dang xuat
 	@GetMapping("/logout")
 	public String CustomerLogoutPage(Customer customer, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
 		session = request.getSession();
+//		phản hồi không được lưu vào bộ nhớ cache
 		response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate"); // HTTP 1.1.
+//		chỉ định rằng phản hồi không được lưu vào bộ đệm.
 		response.setHeader("Pragma", "no-cache"); // HTTP 1.0.
+//		tiêu đề chỉ định ngày/thời gian hết hạn của phản hồi.
 		response.setDateHeader("Expires", 0); // Proxies.
+//		session.invalidate() => làm mất hiệu lực phiên hiện tại, xóa mọi dữ liệu phiên được liên kết.
 		session.invalidate();
 		return "logout";
 	}
@@ -148,23 +171,33 @@ public class CustomerController {
 	String createCustomer(@Valid @ModelAttribute("customerForm") Customer customer, BindingResult br, Model model,
 			HttpSession session) {
 		try {
+//			br => Thong bao neu co the nao dien sai thong tin => Ve trang dang ki
 			if (br.hasErrors()) {
 				log.info("BindingResult Found an error.");
 				return "register";
 			} else {
+//				Lấy thông tin của khách hàng (email, tên, địa chỉ, điện thoại, mật khẩu, mã pin) từ đối tượng customer
 				String email = customer.getEmail();
 				String name = customer.getName();
 				String address = customer.getAddress();
 				String phone = customer.getPhone();
 				String password = customer.getPassword();
 				String pinCode = customer.getPinCode();
-				String encryptedPassword = bCryptPasswordEncoder.encode(password);
+//				 Mã hóa mật khẩu bằng một bCryptPasswordEncoderđối tượng
+				String encryptedPassword = bCryptPasswordEncoder.encode(password); // Ma hoa mat khau
+//				Đặt mật khẩu được mã hóa trong đối tượng khách hàng
 				customer.setPassword(encryptedPassword);
+//				Đặt ngày tạo của khách hàng là ngày hiện tại.
 				customer.setCreateDate(new Date());
+//				Đặt tính hợp lệ của khách hàng thành true.
 				customer.setValid(true);
+
+//				Kiểm tra xem một khách hàng với email đã cho đã tồn tại hay chưa bằng cách gọi phương findCustomerByEmailthức trong tệp customerService
 				Customer emailExists = customerService.findCustomerByEmail(email);
-				Customer phoneExists = customerService.findCustomerByPhone(phone);
-				if (emailExists != null) {
+				// Tim kiem khach hang theo email
+//				Kiểm tra xem một khách hàng với số điện thoại đã cho đã tồn tại hay chưa bằng cách gọi phương findCustomerByPhonethức trong tệp customerService
+				Customer phoneExists = customerService.findCustomerByPhone(phone); // Tim kiem khach hang theo sdt
+				if (emailExists != null) { // Mail ton tai => Thong bao loi
 					br.rejectValue("email", "error.customer", "This email already exists!");
 					log.info("This email already exists!");
 					return "register";
@@ -174,23 +207,29 @@ public class CustomerController {
 					return "register";
 				} else {
 					log.info("in else, Saving Customer.");
+//					Lưu thông tin của khách hàng
 					customerService.saveCustomer(customer);
+//					Kiểm tra xem độ dài của tên khách hàng có lớn hơn 15 ký tự hay không. Nếu vậy, nó sẽ chia tên
+//					thành một mảng bằng cách sử dụng khoảng trắng làm dấu phân cách và lưu tên trong thuộc tính phiên "tên"
 					if(name.length() > 15) {
 						String[] names = name.split(" ");
 						session.setAttribute("name", names[0]);
 					} else {
 						session.setAttribute("name", name);
 					}
+//					lưu trữ điện thoại, email, địa chỉ và mã pin của khách hàng
 					session.setAttribute("phone", phone);
 					session.setAttribute("email", email);
 					session.setAttribute("address", address);
 					session.setAttribute("pinCode", pinCode);
+//					Dang nhap thanh cong ve trang home
 					return "redirect:/home";
 				}
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error(e.getMessage());
+//			Sai thong tin dang nhap => Ve trang dang ki
 			return "register";
 		}
 	}
@@ -199,18 +238,23 @@ public class CustomerController {
 	String validateCustomer(@Valid @ModelAttribute("customerLoginForm") Customer customer, BindingResult br,
 			Model model, HttpSession session) {
 		try {
-
+//lấy email do khách hàng nhập từ customerđối tượng
 			String email = customer.getEmail();
 			String rawPassword = customer.getPassword();
+//			gọi một phương thức dịch vụ findCustomerByEmailđể kiểm tra xem khách hàng
+//			có email đã cho có tồn tại trong hệ thống hay không
 			Customer emailExists = customerService.findCustomerByEmail(email);
 			if (emailExists == null) {
+//				Neu chua dang ki => Thong bao email chua duoc dang ki
 				br.rejectValue("email", "error.customer", "This email is not registered.");
 				log.info("This email is not registered.");
 				return "login";
 			} else {
 				String encodedPassword = emailExists.getPassword(); // customerService.findCustomerPassword(email);
+//				Giai ma Password
 				boolean checkPassStatus = bCryptPasswordEncoder.matches(rawPassword, emailExists.getPassword());
 				if (checkPassStatus) {
+//					Kiem tra dang nhap
 					boolean status = customerService.loginCustomer(email, encodedPassword);
 					if (status) {
 						String name = emailExists.getName();						
@@ -278,12 +322,16 @@ public class CustomerController {
 		}
 		String email = Customer.getEmail();
 		log.info("Customer Email = " + email);
+
+//		Nguoi dung co nhap thong tin Email
 		Customer CustomerExist = customerService.findCustomerByEmail(email);
 		if (CustomerExist != null) {
 			log.info("Customer Exist True.");
 			try {
+//				Thuc hien gui mail
 				customerService.sendMail(CustomerExist);
 				log.info("Sending Done...");
+//				Thong bao thanh cong
 				redirectAttributes.addFlashAttribute("success", "Success");
 			} catch (Exception e) {
 				redirectAttributes.addFlashAttribute("error", "Error");
@@ -369,21 +417,28 @@ public class CustomerController {
 	ModelAndView changeCustomerPassword(@RequestParam("password") String password,
 			@RequestParam("confirm-password") String confirmPassword, HttpServletRequest request, HttpSession session,
 			final RedirectAttributes redirectAttributes) {
+
 		session = request.getSession(false);
 		String email = (String) session.getAttribute("email");
 		log.info("email " + email + "password " + password + " confirmPassword " + confirmPassword);
 		if (email != null && !email.equals("")) {
+
+//			Dien thong tin day du
 			if (password == null || confirmPassword == null) {
 				log.info("Email & Password can't be empty.");
 				redirectAttributes.addFlashAttribute("error", "error");
 				return new ModelAndView("redirect:/customer/changepassword");
 			}
+//		    xac nhan mat khau phai giong nhau
 			if (!password.equals(confirmPassword)) {
 				redirectAttributes.addFlashAttribute("unmatched", "unmatched");
 				return new ModelAndView("redirect:/customer/changepassword");
 			}
+//			Tim khach hang co mail nhap vao
+
 			Customer CustomerExist = customerService.findCustomerByEmail(email);
 			if (CustomerExist != null) {
+//				Thuc hien thay doi mat khau
 				log.info("Customer Exist True.");
 				log.info("Time okay.");
 				String encryptedPassword = bCryptPasswordEncoder.encode(password);
@@ -400,13 +455,17 @@ public class CustomerController {
 		}
 	}
 
+//	 Hien thi thong tin nguoi dung => De cap nhat thong tin khach hang
 	@GetMapping("/my-account")
 	public ModelAndView editCustomer(HttpServletRequest request, HttpSession session) {
 		ModelAndView mav = null;
+//		Lay Email nguoi dung
 		String email = (String) session.getAttribute("email");
 		log.info("update customer..." + email);
+//		Khach hang co email
 		Customer customer = customerService.findCustomerByEmail(email);
-		if (customer != null) {
+		if (customer != null) { // Neu co khach hang
+//			Update cac thong tin vao cac the input tuong ung
 			mav = new ModelAndView("my-account");
 			log.info("In Account :: "+customer.getId() + " "+ customer.getGender());
 			mav.addObject("customerUpdate", customer);
@@ -417,7 +476,8 @@ public class CustomerController {
 			return mav;
 		}
 	}
-	
+
+//	CAP NHAT THONG TIN NGUOI DUNG
 	@PostMapping("/updateCustomer")
 	String updateCustomer(@Valid @ModelAttribute("customerUpdate") Customer customer, BindingResult br,
 			HttpSession session, Model model) {

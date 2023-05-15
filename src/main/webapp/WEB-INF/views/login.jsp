@@ -2,6 +2,9 @@
 		 pageEncoding="ISO-8859-1"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+
+<%--l?p l?i, ?i?u ki?n, ??nh d?ng--%>
+<%--<c:if>, <c:forEach>--%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
@@ -43,8 +46,10 @@
 		<div class="row">
 			<div class="col-md-12">
 
-
+<%--Chuyen trang san pham--%>
 				<c:if test="${not empty backUrl}"><center><h4 class="text-center" style="color:red;">Login First</h4><hr></center></c:if>
+<%--			modelAttribute="customerLoginForm => Liên k?t d? li?u bi?u m?u v?i ??i t??ng "customerLoginForm" và cung c?p d? li?u ?ó trong ph??ng th?c
+c?a b? ?i?u khi?n ?? x? lý --%>
 				<form:form action="${pageContext.request.contextPath}/customer/loginCustomer" modelAttribute="customerLoginForm" method="post" class="validatedForm">
 					<div class="contact-form1 form-group">
 						<label class="col-form-label" style="font-weight: bold">Email</label>

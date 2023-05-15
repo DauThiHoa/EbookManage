@@ -21,10 +21,16 @@ public class OrderDetail {
 	@Column(name = "id", nullable = false, unique = true)
 	private Long id;
 
+//	@ManyToOne: nhiều OrderDetailthực thể có thể được liên kết với một Orderthực thể duy nhất
+//	cascade = CascadeType.ALL => OrderDetail, chúng cũng sẽ ảnh hưởng đến Orderthực thể được liên kết
+//	fetch = FetchType.LAZY => sẽ chỉ được tải từ cơ sở dữ liệu khi được truy cập
+//	foreignKey tính cho phép bạn chỉ định ràng buộc khóa ngoài cho cột tham gia
+
 	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	@JoinColumn(name = "order_id", nullable = false, foreignKey = @ForeignKey(name = "ORDER_DETAIL_ORD_FK"))
 	private Order order;
 
+//	@ManyToOne => nhiều OrderDetailthực thể có thể được liên kết với một Product thực thể duy nhất.
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "product_id", nullable = false, foreignKey = @ForeignKey(name = "ORDER_DETAIL_PROD_FK"))
 	private Product product;

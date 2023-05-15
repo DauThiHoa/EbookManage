@@ -41,7 +41,8 @@ public class OrderAdmController
 		 map.addAttribute("orders", orderList);
     	 return "admin_order_view";
      }
-	 
+
+//	 hiển thị các đơn đặt hàng đang chờ xử lý
 	 @GetMapping("/pending-orders")
 	 public String pendingOrders(HttpSession session, Model map) {
 			String aemail = (String) session.getAttribute("aemail");
@@ -49,25 +50,32 @@ public class OrderAdmController
 				return "redirect:/home";
 			}
 			String orderStatus = "Pending";
+//			truy xuất danh sách OrderDetailcác đối tượng có trạng thái đơn hàng đã chỉ định
 			List<OrderDetail> pending = orderDetailAdmService.getOrdersByStatus(orderStatus);
 			//log.info("Pending Orders ::"+pending);
 			map.addAttribute("pending", pending);
 		 return "admin_order_pending";
 	 }
-	 
+
+//	  hiển thị các đơn hàng đã giao
 	 @GetMapping("/delivered-orders")
 	 public String deleveredOrders(HttpSession session, Model map) {
 			String aemail = (String) session.getAttribute("aemail");
 			if(aemail == null) {
+//				ếu email của quản trị viên là null, nghĩa là người dùng chưa được xác thực,
+//				thì phương thức này sẽ chuyển hướng họ đến trang "/home"
 				return "redirect:/home";
 			}
 			String orderStatus = "Delivered";
+//			truy xuất danh sách OrderDetailcác đối tượng có trạng thái đơn hàng đã chỉ định
 			List<OrderDetail> delivered = orderDetailAdmService.getOrdersByStatus(orderStatus);
 			//log.info("delivered Orders ::"+delivered);
+//		 Danh sách đã truy xuất của các đơn đặt hàng đã giao được thêm vào Model
 			map.addAttribute("delivered", delivered);
 		 return "admin_order_delivered";
 	 }
-	 
+
+//	 hiển thị các đơn hàng đã hủy trong bảng quản trị
 	 @GetMapping("/cancelled-orders")
 	 public String cancelledOrders(HttpSession session, Model map) {
 			String aemail = (String) session.getAttribute("aemail");
@@ -75,12 +83,14 @@ public class OrderAdmController
 				return "redirect:/home";
 			}
 			String orderStatus = "Cancelled";
+//			truy xuất danh sách OrderDetailcác đối tượng có trạng thái đơn hàng đã chỉ định
 			List<OrderDetail> cancel = orderDetailAdmService.getOrdersByStatus(orderStatus);
 			//log.info("Cancelled Orders ::"+cancel);
 			map.addAttribute("cancel", cancel);
 		 return "admin_order_cancelled";
 	 }
-	 
+
+//	 thay đổi trạng thái của đơn hàng trong bảng quản trị
 	 @GetMapping("/changeStatus/{orderStatus}/{id}")
 	 public String changeStatusOfOrders(@PathVariable("orderStatus") String  orderStatus, @PathVariable("id") Long id,
 			 RedirectAttributes rda, HttpServletRequest request, HttpSession session)
@@ -90,6 +100,8 @@ public class OrderAdmController
 				return "redirect:/home";
 			}
 			log.info("orderStatus :: "+orderStatus +" id :: "+id);
+
+//			thay đổi trạng thái đơn hàng của đơn hàng đã chỉ định.
 			orderAdmSer.changeOrderStatus(orderStatus, id);
 			String backUrl = request.getHeader("referer");
 			log.info("back URL : "+backUrl);
@@ -117,19 +129,26 @@ public class OrderAdmController
 				return "redirect:/home";
 			}
 	 }
-	
+
+//	 xóa đơn hàng trong bảng quản trị
 	 @GetMapping("/delete/{id}")
 	 public String removeOrder(@PathVariable("id") Long orderId, Order order, 
 			HttpServletRequest request ,HttpSession session, RedirectAttributes rda) {
 		 String aemail = (String) session.getAttribute("aemail");
 			if(aemail == null || orderId == 0) {
+//				Nếu email của quản trị viên là null hoặc orderIdlà 0,
+//				cho biết rằng người dùng chưa được xác thực hoặc ID đơn đặt hàng không hợp lệ,
 				return "redirect:/home";
 			}
 			try {
 				log.info("id :: "+orderId);
+
+//				xóa đơn hàng có ID đã chỉ định khỏi bảng Đơn hàng
 				orderAdmSer.deleteOrdersById(orderId);
 				log.info("deleted from Order Table.");
 				order.setId(orderId);
+
+//				xóa chi tiết đơn hàng được liên kết với ID đơn hàng đã chỉ định khỏi bảng OrderDetail
 				orderAdmSer.deleteOrderDetailById(order);
 				log.info("deleted from OrderDetail Table.");
 				rda.addFlashAttribute("delete", "delete");
