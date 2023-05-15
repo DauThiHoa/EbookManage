@@ -34,7 +34,7 @@
 							<form:errors path="password" cssStyle="color:red;" cssClass="error"/>
 						</div>
 						<div class="right-w3l">
-							<input type="submit" style="font-weight: bold; background: #117a8b" class="form-control" value="Login">
+							<input type="submit" style="font-weight: bold; background: #28a745" class="form-control" value="Login">
 							<a href="/admin/forgot-password" style="color:orangered; font-weight: bold">Forgot Password?</a>
 						</div>
 					</form:form>

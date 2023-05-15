@@ -60,7 +60,7 @@
 							<input type="password" size="35" placeholder="Confirm Password" maxlength="64" minlength="6" class="form-control" name="confirm-password" id="password" required="required" />					
 						</div>
 						<div class="right-w3l">
-							<input type="submit"   style="font-weight: bold; background: #117a8b" class="form-control" value="Reset Password">
+							<input type="submit"   style="font-weight: bold; background: #28a745" class="form-control" value="Reset Password">
 						</div>
 					</form>
 					</div>

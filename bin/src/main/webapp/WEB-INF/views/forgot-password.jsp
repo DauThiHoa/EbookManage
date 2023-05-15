@@ -61,7 +61,7 @@
 							<input type="submit" class="form-control" value="Submit">
 						</div>
 						<p class="text-center dont-do mt-3">Don't have an account?
-							<a href="login">Register Now</a>
+							<a  href="login">Register Now</a>
 						</p>
 					</form:form>
 					</div>

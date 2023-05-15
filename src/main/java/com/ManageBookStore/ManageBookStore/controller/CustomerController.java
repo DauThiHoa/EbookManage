@@ -34,8 +34,12 @@ import com.ManageBookStore.ManageBookStore.entity.Customer;
 import com.ManageBookStore.ManageBookStore.service.CustomerService;
 
 @Controller
-@RequestMapping("/customer")
+@RequestMapping("/customer") // Duong dan link
 public class CustomerController {
+
+//	Ghi nhật ký bằng cách sử dụng khung công tác ghi nhật ký SLF4J
+//	log.info("Message")để ghi thông báo thông tin,
+//	log.error("Error message", exception)ghi thông báo lỗi cùng với một ngoại lệ
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -43,19 +47,24 @@ public class CustomerController {
 	// removes the leading & trailing white spaces.
 	// If string only has white space .... trim it to null.
 
+//	Cấu hình thời gian hết hạn cho chức năng liên quan đến email (chẳng hạn như hết hạn mã thông báo) => 24h
+//	=> Doi mat khau
 	@Value("${email.expire.time}")
 	private long timeInHours;
 
+//	Cắt bỏ khoảng trắng khỏi String các trường trong yêu cầu gửi đến, đảm bảo rằng các chuỗi trống được coi là null.
 	@InitBinder
 	public void initBinder(WebDataBinder dataBinder) {
 		StringTrimmerEditor ste = new StringTrimmerEditor(true);
 		dataBinder.registerCustomEditor(String.class, ste);
 	}
 
+//	Lop Xu ly ( lien quan toi cac xu ly bang Customer )
 	@Autowired
 	private CustomerService customerService;
 
 	// Inject BCryptPasswordEncoder for encoding password, default length is 60.+
+//	=> Ma hoa mat khau
 	@Autowired
 	BCryptPasswordEncoder bCryptPasswordEncoder;
 

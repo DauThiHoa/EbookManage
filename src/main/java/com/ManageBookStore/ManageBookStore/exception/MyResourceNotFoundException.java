@@ -16,6 +16,8 @@ public class MyResourceNotFoundException extends RuntimeException {
     public MyResourceNotFoundException(String message) {
         super(message);
     }
+
+//    Ngoại lệ tài nguyên không tìm thấy của tôi (Nguyên nhân có thể ném) {
     public MyResourceNotFoundException(Throwable cause) {
         super(cause);
     }

@@ -13,14 +13,22 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+// Tham chieu toi bang customer
 @Entity
 @Table(name = "customer")
 public class Customer {
-	
+
+//	Java Persistence API (JPA)
+//	@Id => Khoa chinh
+//	@GeneratedValue(strategy = GenerationType.IDENTITY) => Tu dong tao Id khong trung voi cac hang khac
+//	@Column(name = "id", nullable = false, unique = true) => Ten cot là id , khong dươc phep Null , phai la duy nhat
 	@Id @GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id", nullable = false, unique = true)
 	private Long id;
-	
+
+//	@NotNull(message = "Customer name is required." => Thong bao khong duoc bo trong
+//	Khach hang ten toi thieu là 2 ki tu va toi da 50 ki tu
+//	@Column(name = "name", nullable = false) => Ten cot la nam => Not null
 	@NotNull(message = "Customer name is required.")
 	@Size(min = 2, max = 50, message = "Customer name must be between 2 and 50 characters.")
 	@Column(name = "name", nullable = false)
@@ -56,7 +64,8 @@ public class Customer {
 		
 	@Column(name = "valid", nullable = false)
     private Boolean valid;
-    
+
+//	 @Temporal(TemporalType.TIMESTAMP) => thông tin ngày và giờ bao gồm năm, tháng, ngày, giờ, phút, giây và phần nhỏ của giây.
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "added_date", nullable = false)
     private Date createDate;
@@ -143,6 +152,7 @@ public class Customer {
 		this.createDate = createDate;
 	}
 
+//	toString
 	@Override
 	public String toString() {
 		return "Customer [id=" + id + ", name=" + name + ", password=" + password + ", email=" + email + ", gender="

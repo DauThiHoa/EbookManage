@@ -58,7 +58,7 @@
 						</div>
 					</div>
 					<div class="right-w3l col-md-6">
-						<input type="submit" style="font-weight: bold; background: #117a8b" id="submit" class="form-control" value="Update">
+						<input type="submit" style="font-weight: bold; background: #28a745" id="submit" class="form-control" value="Update">
 					</div>
 				</div>
 			</form>

@@ -55,7 +55,8 @@
 							<input type="password" class="form-control" size="35" placeholder="Confirm Password" name="confirm_password" id="confirm_password" required="required">
 						</div>
 						<div class="right-w3l">
-							<input class="form-control btn btn-primary" type="button" value="Submit" onClick="validatePassword();" />
+							<input class="form-control btn btn-primary"
+								   style="background: #28a745; font-weight: bold" type="button" value="Submit" onClick="validatePassword();" />
 						</div>
 					</form>
 					</div>

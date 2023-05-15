@@ -78,7 +78,7 @@
 						</div>	
 					</div>
 						<div class="right-w3l col-md-6">
-							<input type="button" style="background-color: #0879c9;" id="submit" class="btn btn-primary form-control" value="Submit">
+							<input type="button" style="background-color: #28a745;" id="submit" class="btn btn-primary form-control" value="Submit">
 						</div>
 				</div>
 			</form>

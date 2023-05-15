@@ -10,6 +10,7 @@ public class CustomerUtility {
 	private static final SecureRandom secureRandom = new SecureRandom();
 	private static final Base64.Encoder base64Encoder = Base64.getUrlEncoder();
 
+//	tạo mã thông báo mới dưới dạng String sử dụng trình tạo số ngẫu nhiên an toàn và mã hóa base64.
 	public static String generateNewToken() {
 		byte[] randomBytes = new byte[24];
 		secureRandom.nextBytes(randomBytes);

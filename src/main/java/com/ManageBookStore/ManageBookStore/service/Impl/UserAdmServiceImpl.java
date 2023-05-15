@@ -16,6 +16,7 @@ import com.ManageBookStore.ManageBookStore.service.UserAdmService;
 @Transactional
 public class UserAdmServiceImpl implements UserAdmService
 {
+//	 Hien thuc cac phuong thuc qua lop UserAdmRepository den bang Customer
 	@Autowired
 	UserAdmRepository userAdmRepo;
 

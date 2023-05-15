@@ -116,7 +116,7 @@
 						</div>
 					</div>
 					<div class="right-w3l col-md-6">
-						<input type="button" style="font-weight: bold; background: #117a8b" class="btn btn-primary form-control" id="submit" value="Submit">
+						<input type="button" style="font-weight: bold; background: #28a745" class="btn btn-primary form-control" id="submit" value="Submit">
 					</div>
 				</div>
 			</form>

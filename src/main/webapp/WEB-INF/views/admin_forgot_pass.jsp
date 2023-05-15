@@ -62,7 +62,7 @@
 							<input type="email" class="form-control" size="35" placeholder="Enter email" name="email" id="email" required="required">
 						</div>	
 						<div class="right-w3l">
-							<input type="submit" class="form-control btn btn-primary" value="Submit">
+							<input type="submit" style="font-weight: bold; background: #28a745" class="form-control btn btn-primary" value="Submit">
 						</div>
 					</form>
 					</div>

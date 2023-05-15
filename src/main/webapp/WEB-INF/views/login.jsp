@@ -57,7 +57,7 @@
 						<form:errors path="password" cssStyle="color:red;" cssClass="error"/>
 					</div>
 					<div class="right-w3l">
-						<input type="submit" style="background: #117a8b; font-weight: bold" class="form-control btn btn-primary" value="Login">
+						<input type="submit" style="background: #28a745; font-weight: bold" class="form-control btn btn-primary" value="Login">
 					</div>
 				</form:form>
 				<a href="register" style="color:orangered; font-weight: bold">Register</a>

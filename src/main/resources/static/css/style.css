@@ -317,7 +317,7 @@ ul.multi-column-dropdown li a:hover {
 
 .carousel-item.item1 {
 
-    background: url(../images/img_2.png) no-repeat center;
+    background: url(../images/img_1.png) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -330,7 +330,7 @@ ul.multi-column-dropdown li a:hover {
 
 .carousel-item.item2 {
     /*http://localhost:8080/image/home-img-2.jpg*/
-    background: url(../images/img_1.png) no-repeat center;
+    background: url(../images/img_2.png) no-repeat center;
     background-size: cover;
     -webkit-background-size: cover;
     -moz-background-size: cover;
