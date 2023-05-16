@@ -60,6 +60,17 @@ public class Product {
     @Column(name = "create_date", nullable = false)
     private Date createDate;
 
+	public Product(String code, String name, String description, double mrpPrice, double price, String image, Boolean active, Date createDate) {
+		this.code = code;
+		this.name = name;
+		this.description = description;
+		this.mrpPrice = mrpPrice;
+		this.price = price;
+		this.image = image;
+		this.active = active;
+		this.createDate = createDate;
+	}
+
 	public Product() {}
 
 	public Long getId() {
