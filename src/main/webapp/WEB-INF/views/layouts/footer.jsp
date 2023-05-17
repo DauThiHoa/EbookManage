@@ -1,3 +1,5 @@
+
+
 <!-- footer -->
 	<footer>
 		<div class="footer-top-first">
@@ -7,7 +9,7 @@
 					<div class="col-md-4 offer-footer">
 						<div class="row">
 							<div class="col-4 icon-fot">
-								<i class="fas fa-dolly"></i>
+								<img src="../image1/serv-3.png" alt="">
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Free Shipping</h3>
@@ -17,7 +19,7 @@
 					<div class="col-md-4 offer-footer my-md-0 my-4">
 						<div class="row">
 							<div class="col-4 icon-fot">
-								<i class="fas fa-shipping-fast"></i>
+								<img src="${pageContext.request.contextPath}/image1/serv-1.png" alt="">
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Fast Delivery</h3>
@@ -27,14 +29,17 @@
 					<div class="col-md-4 offer-footer">
 						<div class="row">
 							<div class="col-4 icon-fot">
-								<i class="far fa-thumbs-up"></i>
+								<img src="${pageContext.request.contextPath}/image1/serv-4.png" alt="">
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Huge Saving</h3>
 							</div>
 						</div>
 					</div>
+
 				</div>
+
+
 			</div>
 		</div>
 	</footer>
