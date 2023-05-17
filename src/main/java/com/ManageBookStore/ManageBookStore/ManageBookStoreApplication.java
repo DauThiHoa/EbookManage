@@ -1,5 +1,7 @@
 package com.ManageBookStore.ManageBookStore;
 
+import com.ManageBookStore.ManageBookStore.config.DataSourceConfig;
+import com.ManageBookStore.ManageBookStore.config.ProductTableChecker;
 import com.ManageBookStore.ManageBookStore.entity.Product;
 import com.ManageBookStore.ManageBookStore.repository.ProductRepository;
 import com.ManageBookStore.ManageBookStore.service.ProductService;
@@ -12,22 +14,42 @@ import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfi
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import javax.persistence.*;
+import javax.sql.DataSource;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
 
 @SpringBootApplication
+@ComponentScan("com.ManageBookStore.ManageBookStore.service")
+@ComponentScan("com.ManageBookStore.ManageBookStore.config")
 @EnableAutoConfiguration(exclude = {SecurityAutoConfiguration.class})
 public class ManageBookStoreApplication extends SpringBootServletInitializer  implements CommandLineRunner {
 
 	@Autowired
 	private ProductService productService;
 
+	@Autowired
+	private ProductTableChecker productTableChecker;
+
+	@Autowired
+	private DataSourceConfig dataSourceConfig;
+
+
 	@Override
 	public void run(String... args) throws Exception {
+
+		DataSource dataSource = dataSourceConfig.dataSource();
+
+		ProductTableChecker checker = new ProductTableChecker(dataSource);
+		boolean tableExists = checker.doesTableExist();
+
+		if (!tableExists) {
+
+
 		Product p1 = new Product("P1","The talented grandmother in the saga region", "Saburo Ishikawa" ,
 				40.760 , 45.760 , "https://newshop.vn/public/uploads/products/52646/sach-nguoi-ba-tai-gioi-vung-saga-tap-11.jpg" ,
 				true , new Date());
@@ -231,6 +253,10 @@ public class ManageBookStoreApplication extends SpringBootServletInitializer  im
 		productService.saveProduct(p29);
 		productService.saveProduct(p30);
 
+
+		} else {
+			return;
+		}
 
 	}
 

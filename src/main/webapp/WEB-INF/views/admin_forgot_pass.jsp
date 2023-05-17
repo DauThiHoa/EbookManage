@@ -69,6 +69,7 @@
 				</div>
 				</div>
 			</div>
+	<div style="margin-top: 9%"></div>
 	<jsp:include page="layouts/footer.jsp"></jsp:include>
 </body>
 </html>
