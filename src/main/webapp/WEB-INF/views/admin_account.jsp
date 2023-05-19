@@ -12,31 +12,40 @@
 
 	<!-- //banner-2 -->
 	<!-- page -->
-	<div class="services-breadcrumb">
-		<div class="agile_inner_breadcrumb">
-			<div class="container">
-				<ul class="w3_short">
-					<li>
-						<a style="margin-left: -16%;" href="/admin/home">Home</a>
-						<i>|</i>
-					</li>
-					<li>MY ACCOUNT</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<%--	<div class="services-breadcrumb">--%>
+<%--		<div class="agile_inner_breadcrumb">--%>
+<%--			<div class="container">--%>
+<%--				<ul class="w3_short">--%>
+<%--					<li>--%>
+<%--						<a style="margin-left: -16%;" href="/admin/home">Home</a>--%>
+<%--						<i>|</i>--%>
+<%--					</li>--%>
+<%--					<li>MY ACCOUNT</li>--%>
+<%--				</ul>--%>
+<%--			</div>--%>
+<%--		</div>--%>
+<%--	</div>--%>
 	<!-- //page -->
 <!-- log in -->
 	<br>
 <!-- register -->
 	<div class="contact py-sm-5 py-4">
 		<div class="container py-xl-4 py-lg-2">
+
+			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3" style="margin-top: -5%;">
+				<span>M</span>y
+				<span>A</span>ccount
+			</h3>
+
+
 		<c:if test="${not empty success}">
 			<div class="alert alert-success alert-dismissible fade show">
 				Account Updated Successfully.
 				<button type="button" class="close" data-dismiss="alert">&times;</button>
 			</div>
 		</c:if>
+
+
 		<c:if test="${not empty error}">
 			<div class="alert alert-danger alert-dismissible fade show">
 				Something went wrong.

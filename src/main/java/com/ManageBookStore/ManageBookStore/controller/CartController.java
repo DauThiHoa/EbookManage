@@ -130,7 +130,8 @@ public class CartController {
 					total_price += c.getPrice() * c.getQuantity();
 				}
 //				thêm các thuộc tính vào Modelđối tượng để truy cập chúng trong mẫu xem
-				total_saving = total_mrp - total_price;
+//				total_saving = total_mrp - total_price;
+				total_saving = total_price - total_mrp;
 				model.addAttribute("total_saving", total_saving);
 				model.addAttribute("total_mrp", total_mrp);
 				model.addAttribute("total_qty", total_qty);

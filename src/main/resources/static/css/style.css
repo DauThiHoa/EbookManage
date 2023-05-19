@@ -2185,7 +2185,7 @@ div#testimonials h4.m-title {
 }
 
 .map iframe {
-    width: 100%;
+    width: 80%;
     min-height: 400px;
     border: none;
 	display: inherit;

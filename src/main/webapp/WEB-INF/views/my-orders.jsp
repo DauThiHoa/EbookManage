@@ -26,7 +26,8 @@
 </c:if>
 		<div class="container py-xl-4 py-lg-2">
 			<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3">
-				<span>M</span>y Orders
+				<span>M</span>y
+				<span>O</span>rders
 			</h3>
 			<div class="container">
 			<div class="table-responsive">

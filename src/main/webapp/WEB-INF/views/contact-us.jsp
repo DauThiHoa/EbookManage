@@ -133,7 +133,7 @@
 	<!---728x90--->
 	<!-- map -->
 	<div class="map mt-sm-0 mt-4">
-		<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120592.11859714636!2d72.89658156319369!3d19.173189762541277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b78de5f2ca09%3A0xebc8ac717f81595!2sGokuldham%20Co-op%20housing%20society!5e0!3m2!1sen!2sin!4v1595606986766!5m2!1sen!2sin" allowfullscreen=""></iframe>
+		<iframe style="margin-left: 10%;" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d120592.11859714636!2d72.89658156319369!3d19.173189762541277!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7b78de5f2ca09%3A0xebc8ac717f81595!2sGokuldham%20Co-op%20housing%20society!5e0!3m2!1sen!2sin!4v1595606986766!5m2!1sen!2sin" allowfullscreen=""></iframe>
 	</div>
 	<!-- //map -->	
 	<jsp:include page="layouts/footer.jsp"></jsp:include>

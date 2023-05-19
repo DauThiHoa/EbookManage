@@ -32,7 +32,7 @@
 <%--								<h3 class="heading-tittle text-center font-italic">Our Products</h3>--%>
 
 								<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3" style="margin-top: -5%;">
-									<span>O</span>ur
+									<span>A</span>ll
 									<span>P</span>roducts
 								</h3>
 

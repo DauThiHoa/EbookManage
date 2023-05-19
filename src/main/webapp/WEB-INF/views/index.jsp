@@ -105,13 +105,13 @@
 					<c:if test="${pageNo > 0}">
 						<div class="col-sm-12 text-center">
 							<b><a class="btn btn-success" style="color: white;border-radius: 15px; font-weight: bold" href="${nextUrl}">LOAD MORE ITEMS</a></b>&nbsp;
-							<b><a class="btn btn-danger" href="${backUrl}" style="color: white;border-radius: 15px;font-weight: bold; background: orangered">GO BACK</a></b>
+							<b><a class="btn btn-danger" href="${backUrl}" style="color: white;border-radius: 15px;font-weight: bold; background: #f45c5d">GO BACK</a></b>
 						</div>
 					</c:if>
 					<c:if test="${empty products}">
 						<div class="col-12 text-center">
 							<b><a class="btn btn-danger"
-								  href="${header.referer}" style="color: white;border-radius: 15px; font-weight: bold; background: orangered">GO BACK</a></b>
+								  href="${header.referer}" style="color: white;border-radius: 15px; font-weight: bold; background: #f45c5d">GO BACK</a></b>
 						</div>
 					</c:if>
 					</c:otherwise>

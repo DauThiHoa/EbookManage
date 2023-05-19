@@ -9,7 +9,7 @@
 					<div class="col-md-4 offer-footer">
 						<div class="row">
 							<div class="col-4 icon-fot">
-								<img src="../image1/serv-3.png" alt="">
+								<img src="${pageContext.request.contextPath}/image1/serv-3.png" alt="">
 							</div>
 							<div class="col-8 text-form-footer">
 								<h3>Free Shipping</h3>

@@ -38,19 +38,19 @@ table {
 	<jsp:include page="layouts/admin_menu.jsp"></jsp:include>
 
 	<!-- page -->
-	<div class="services-breadcrumb">
-		<div class="agile_inner_breadcrumb">
-			<div class="container">
-				<ul class="w3_short">
-					<li>
-						<a style="margin-left: -16%;" href="${pageContext.request.contextPath}/admin/home">Home</a>
-						<i>|</i>
-					</li>
-					<li>Pending Orders</li>
-				</ul>
-			</div>
-		</div>
-	</div>
+<%--	<div class="services-breadcrumb">--%>
+<%--		<div class="agile_inner_breadcrumb">--%>
+<%--			<div class="container">--%>
+<%--				<ul class="w3_short">--%>
+<%--					<li>--%>
+<%--						<a style="margin-left: -16%;" href="${pageContext.request.contextPath}/admin/home">Home</a>--%>
+<%--						<i>|</i>--%>
+<%--					</li>--%>
+<%--					<li>Pending Orders</li>--%>
+<%--				</ul>--%>
+<%--			</div>--%>
+<%--		</div>--%>
+<%--	</div>--%>
 	<!-- //page -->
 <div class="contact py-sm-5 py-4">
 <div class="container-fluid py-xl-4 py-lg-2">
@@ -61,7 +61,12 @@ table {
 				</div>	
 </c:if>
 <p id="mb">Slide Right to see full table.</p>
-<h3 class="text-center">Delivered Orders</h3>
+
+	<h3 class="tittle-w3l text-center mb-lg-5 mb-sm-4 mb-3" style="margin-top: -5%;">
+		<span>D</span>elivered
+		<span>O</span>rders
+	</h3>
+
 	<table id="example" class="table table-hover table-bordered text-center">
 				<thead>
 					<tr>
