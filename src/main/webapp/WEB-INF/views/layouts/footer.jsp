@@ -55,6 +55,7 @@
 	<script src="${pageContext.request.contextPath}/js/jquery-2.2.3.min.js"></script>
 	<!-- nav smooth scroll -->
 	<script>
+<%--		hiển thị và ẩn menu thả xuống khi di chuột qua một phần tử cụ thể với lớp "thả xuống" --%>
 		$(document).ready(function () {
 			$(".dropdown").hover(
 				function () {
@@ -72,6 +73,7 @@
 	<!-- popup modal (for location)-->
 	<script src="${pageContext.request.contextPath}/js/jquery.magnific-popup.js"></script>
 	<script>
+<%--		tạo hiệu ứng hoạt hình thu phóng khi hiển thị nội dung nội tuyến trong cửa sổ bật lên --%>
 		$(document).ready(function () {
 			$('.popup-with-zoom-anim').magnificPopup({
 				type: 'inline',
@@ -92,6 +94,7 @@
 	<!-- cart-js -->
 	<script src="${pageContext.request.contextPath}/js/minicart.js"></script>
 	<script>
+<%--		hiển thị Giỏ hàng --%>
 		paypals.minicarts.render(); 
 		paypals.minicarts.cart.on('checkout', function (evt) {
 			var items = this.items(),
@@ -109,6 +112,7 @@
 	<script src="${pageContext.request.contextPath}/js/move-top.js"></script>
 	<script src="${pageContext.request.contextPath}/js/easing.js"></script>
 	<script>
+<%--		tạo hiệu ứng cuộn mượt mà khi nhấp vào các phần tử có lớp "cuộn" --%>
 		jQuery(document).ready(function ($) {
 			$(".scroll").click(function (event) {
 				event.preventDefault();
@@ -120,6 +124,7 @@
 		});
 	</script>
 	<script>
+<%--		tạo nút hoặc chức năng "quay lại đầu trang" trên trang web --%>
 		$(document).ready(function () {
 			$().UItoTop({
 				easingType: 'easeOutQuart'

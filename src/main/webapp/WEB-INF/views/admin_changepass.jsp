@@ -69,6 +69,7 @@
 	<jsp:include page="layouts/footer.jsp"></jsp:include>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.1/jquery.validate.min.js" type="text/javascript"></script>
 	<script>
+<%--		 th?c hi?n xác th?c phía máy khách trên tr??ng m?t kh?u c?a bi?u m?u và tr??ng m?t kh?u xác nh?n c?a bi?u m?u --%>
     function validatePassword() {
         var validator = $(".validatedForm").validate({
             rules: {

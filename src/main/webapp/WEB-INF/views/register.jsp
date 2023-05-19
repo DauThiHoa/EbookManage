@@ -108,6 +108,9 @@
 	<jsp:include page="layouts/footer1.jsp"></jsp:include>
 
 	<script type="text/javascript">
+
+<%--		xu ly su kien mo tren mot phan tu co ID dien thoai Khi nguoi dung roi khoi truong nhap dien thoai bang cach
+nhap vao ben ngoai hoac nhan phim Tab ma se xac thuc so dien thoai da nhap--%>
 	$(document).ready(function() {
 	    $('#phone').blur(function(e) {
 	        if (validatePhone('phone')) {
@@ -119,6 +122,7 @@
 	    });
 	});
 
+	// kiem tra xem gia tri duoc nhap trong truong nhap so dien thoai co phai la so dien thoai hop le hay khong
 	function validatePhone(phone) {
 	    var a = document.getElementById(phone).value;
 	    var filter = /^\d*(?:\.\d{1,2})?$/;
@@ -129,6 +133,8 @@
 	        return false;
 	    }
 	}
+
+	// xu ly su kien nhap chuot tren mot phan tu co ID gui va thuc hien xac thuc bieu mau truoc khi gui bieu mau
 	$(document).ready(function() {
 	    $('#submit').click(function(e) {
 	    	var name = $("#name").val();

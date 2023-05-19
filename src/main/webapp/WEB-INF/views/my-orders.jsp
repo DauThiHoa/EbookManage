@@ -98,6 +98,7 @@
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 	<!--quantity-->
 	<script>
+<%--		de khoi tao plugin DataTable tren mot phan tu co ID la vi du--%>
 	$(document).ready(function() {
 	    $('#example').DataTable();
 	} );

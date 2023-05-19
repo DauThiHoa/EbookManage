@@ -122,6 +122,8 @@ table {
 <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
 	<script>
+
+<%--		khoi tao mot DataTable voi cac tuy chon va cai dat cu the--%>
 	$(document).ready(function() {
 	    $('#example').dataTable( {
 	    paging: false,

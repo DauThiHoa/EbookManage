@@ -106,6 +106,7 @@
 	<script src="${pageContext.request.contextPath}/js/jquery.flexslider.js"></script>
 	<script>
 		// Can also be used with $(document).ready()
+		// khoi tao mot flexslider tren cac phan tu co lop flexslider
 		$(window).load(function () {
 			$('.flexslider').flexslider({
 				animation: "slide",

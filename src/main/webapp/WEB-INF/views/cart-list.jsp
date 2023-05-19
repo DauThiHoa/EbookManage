@@ -242,12 +242,14 @@
 	   	} );
 	</script>
 	<script type="text/javascript">
+<%--		th?c hi?n m?t hành ??ng c? th? khi ???c nh?p --%>
 	$(document).ready(function(){
 		$(".reset").click(function() {
 		$(this).closest('form').find("input[type=text], textarea").val("");
 		});
 	});
-		
+
+	//  xác th?c ??u vào s? ?i?n tho?i khi ng??i dùng hoàn t?t ch?nh s?a tr??ng ??u vào "txtPhone"
 	$(document).ready(function() {
 	    $('#txtPhone').blur(function(e) {
 	        if (validatePhone('txtPhone')) {
@@ -260,6 +262,7 @@
 	    });
 	});
 
+	//  Xac thuc so dien thoai duoi dang chuoi
 	function validatePhone(txtPhone) {
 	    var a = document.getElementById(txtPhone).value;
 	    var filter = /^\d*(?:\.\d{1,2})?$/;
@@ -270,7 +273,9 @@
 	        return false;
 	    }
 	}
-	
+	// Xu ly su kien mo tren 1 phan tu co Id la "pinCode"
+	//  => Khi nguoi dung roi khoi truong nhap "pinCode" ( bang cach nhap vao ben ngoai hoac nhan phim Tab )
+	// => ma se xac thuc ma pin da nhap
 	$(document).ready(function() {
 	    $('#pinCode').blur(function(e) {
 	        if (validateCode('pinCode')) {
@@ -282,6 +287,7 @@
 	    });
 	});
 
+	//  Kiem tra xem gia tri duoc nhap trong truong nhap ma pin co phai la ma hop le hay khong
 	function validateCode(pinCode) {
 	    var p = document.getElementById(pinCode).value;
 	    var filter = /^\d*(?:\.\d{1,2})?$/;
@@ -292,7 +298,9 @@
 	        return false;
 	    }
 	}
-	
+
+	// Cung cap la xu ly su kien nhap chuot tren mot phan tu gui ID
+	// Thuc hien xac thuc bieu mau cho so dien thoai va ma pin truoc khi gui bieu mau
 	$(document).ready(function() {
 	    $('#submit').click(function(e) {
 	    	var mobileNum = $("#txtPhone").val();

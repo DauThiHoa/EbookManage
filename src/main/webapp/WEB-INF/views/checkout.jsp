@@ -124,12 +124,15 @@
 	</div>
 <jsp:include page="layouts/cart-footer.jsp"></jsp:include>
 <script type="text/javascript">
+<%--	Xu ly su kien chuot tren cac phan tu co lop "reset" va dat lai cac gia tri cuar kieu nhap van ban va vung van ban trong cung 1 bieu mau--%>
 	$(document).ready(function(){
 		$(".reset").click(function() {
 		$(this).closest('form').find("input[type=text], textarea").val("");
 		});
 	});
-		
+
+	// Xu ly su kien mo tren mot phan tu co ID "txtPhone"
+	// => Khi nguoi dung roi khoi truong nhap "txtPhone" ( Bang cach nhap vao ben ngoa hoac nhan phim Tab ) => ma se xac thuc so dien thoai da nhap
 	$(document).ready(function() {
 	    $('#txtPhone').blur(function(e) {
 	        if (validatePhone('txtPhone')) {
@@ -142,6 +145,7 @@
 	    });
 	});
 
+	// Kiem tra xem gia tri duoc nhap trong truong nhap so dien thoai co phai la so dien thoai hop le hay khong
 	function validatePhone(txtPhone) {
 	    var a = document.getElementById(txtPhone).value;
 	    var filter = /^\d*(?:\.\d{1,2})?$/;
@@ -152,7 +156,8 @@
 	        return false;
 	    }
 	}
-	
+
+	// xu ly su kien mo tren mot phan tu co ID pinCode Khi nguoi dung roi khoi truong nhap pinCode bang cach nhap vao ben ngoai hoac nhan phim Tab ma se xac thuc ma pin da nhap
 	$(document).ready(function() {
 	    $('#pinCode').blur(function(e) {
 	        if (validateCode('pinCode')) {
@@ -164,6 +169,7 @@
 	    });
 	});
 
+	// kiem tra xem gia tri duoc nhap trong truong nhap ma pin co phai la ma hop le hay khong
 	function validateCode(pinCode) {
 	    var p = document.getElementById(pinCode).value;
 	    var filter = /^\d*(?:\.\d{1,2})?$/;
@@ -174,7 +180,8 @@
 	        return false;
 	    }
 	}
-	
+
+	// xu ly su kien nhap chuot tren mot phan tu co ID gui va thuc hien xac thuc bieu mau truoc khi gui bieu mau
 	$(document).ready(function() {
 	    $('#submit').click(function(e) {
 	    	var mobileNum = $("#txtPhone").val();
