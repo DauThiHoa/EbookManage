@@ -56,7 +56,8 @@
 				<div class="col-sm-4 contact-grid agileinfo-6 mt-sm-0 mt-2">
 					<div class="contact-grid1 text-center">
 						<div class="con-ic">
-							<i class="fas fa-map-marker-alt rounded-circle"></i>
+<%--							<i class="fas fa-map-marker-alt rounded-circle"></i>--%>
+							<img class="img-fluid" src="${pageContext.request.contextPath}/images/404.png" alt="">
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3">Address</h4>
 						<p style="font-weight: bold;color:black;">Dharmesh General Store

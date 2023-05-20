@@ -42,7 +42,9 @@
 				<div class="col-sm-4 contact-grid agileinfo-6 mt-sm-0 mt-2">
 					<div class="contact-grid1 text-center">
 						<div class="con-ic">
-							<i class="fas fa-map-marker-alt rounded-circle"></i>
+<%--							<i class="fas fa-map-marker-alt rounded-circle"></i>--%>
+<%--							<img src="">--%>
+							<img class="img-fluid" src="${pageContext.request.contextPath}/image1/icon-3.png" alt="">
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3" style="font-weight: bold; color: #117a8b">Address</h4>
 						<p style="font-weight: bold;color:black;">Ebook Store
@@ -53,7 +55,8 @@
 				<div class="col-sm-4 contact-grid agileinfo-6 my-sm-0 my-4">
 					<div class="contact-grid1 text-center">
 						<div class="con-ic">
-							<i class="fas fa-phone rounded-circle"></i>
+<%--							<i class="fas fa-phone rounded-circle"></i>--%>
+								<img class="img-fluid" src="${pageContext.request.contextPath}/image1/icon-2.png" alt="">
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3"  style="font-weight: bold; color: #117a8b">Call Us</h4>
 						<p style="font-weight: bold;color:black;"><a style="font-weight: bold;color:black;" href="tel:+91121122000">+(91) 121 122 000</a>
@@ -65,7 +68,9 @@
 				<div class="col-sm-4 contact-grid agileinfo-6">
 					<div class="contact-grid1 text-center">
 						<div class="con-ic">
-							<i class="fas fa-envelope-open rounded-circle"></i>
+<%--							<i class="fas fa-envelope-open rounded-circle"></i>--%>
+								<img class="img-fluid" src="${pageContext.request.contextPath}/image1/icon-1.png" alt="">
+
 						</div>
 						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3"  style="font-weight: bold; color: #117a8b">Email</h4>
 						<p>
