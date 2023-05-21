@@ -238,7 +238,7 @@ public class CustomerController {
 	String validateCustomer(@Valid @ModelAttribute("customerLoginForm") Customer customer, BindingResult br,
 			Model model, HttpSession session) {
 		try {
-//lấy email do khách hàng nhập từ customerđối tượng
+//lấy email do khách hàng nhập từ customer đối tượng
 			String email = customer.getEmail();
 			String rawPassword = customer.getPassword();
 //			gọi một phương thức dịch vụ findCustomerByEmailđể kiểm tra xem khách hàng
