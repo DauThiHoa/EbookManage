@@ -9,6 +9,7 @@ import com.ManageBookStore.ManageBookStore.entity.Customer;
 
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
 
+
 //	tìm một khách hàng trong cơ sở dữ liệu dựa trên số điện thoại của họ
 	@Query(value = "select c from Customer c where c.phone=?1")
 	Customer checkCustomerPhone(String phone);
