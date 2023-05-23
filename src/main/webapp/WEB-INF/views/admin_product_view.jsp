@@ -6,7 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Ebook General Store | Products</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<title>Ebook General Store | Products</title>
 <jsp:include page="layouts/header.jsp"></jsp:include>
 <link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
 <style type="text/css">

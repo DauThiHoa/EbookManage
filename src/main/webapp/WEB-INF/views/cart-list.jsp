@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
@@ -8,6 +8,8 @@
 <c:if test="${empty email}">
 	<c:redirect url="${pageContext.request.contextPath}/user/sign-in"/>  
 </c:if>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Ebook General Store | My Cart</title>
 	<jsp:include page="layouts/header.jsp"></jsp:include>
 	<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -243,14 +245,14 @@
 	   	} );
 	</script>
 	<script type="text/javascript">
-<%--		th?c hi?n m?t h‡nh ??ng c? th? khi ???c nh?p --%>
+<%--		th?c hi?n m?t h√†nh ??ng c? th? khi ???c nh?p --%>
 	$(document).ready(function(){
 		$(".reset").click(function() {
 		$(this).closest('form').find("input[type=text], textarea").val("");
 		});
 	});
 
-	//  x·c th?c ??u v‡o s? ?i?n tho?i khi ng??i d˘ng ho‡n t?t ch?nh s?a tr??ng ??u v‡o "txtPhone"
+	//  x√°c th?c ??u v√†o s? ?i?n tho?i khi ng??i d√πng ho√†n t?t ch?nh s?a tr??ng ??u v√†o "txtPhone"
 	$(document).ready(function() {
 	    $('#txtPhone').blur(function(e) {
 	        if (validatePhone('txtPhone')) {

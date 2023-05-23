@@ -1,9 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
     <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Ebook General Store | Home </title>
 	<jsp:include page="layouts/header.jsp"></jsp:include>
 </head>
@@ -46,7 +49,7 @@
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro" style="margin-top:-55px;">
 													<a href="${pageContext.request.contextPath}/product/productdetails?code=${product.code}"
-													   style="font-weight: bold" class="link-product-add-cart">Quick View</a>
+													   style="font-weight: bold" class="link-product-add-cart">${index_QuickView}</a>
 												</div>
 											</div>
 										</div>
@@ -76,9 +79,9 @@
 														<input type="hidden" name="cancel_return" value=" " />
 															<div class="row">
    				 <div class="col-sm-12 text-center">
-         			<input type="submit" class="btn btn-primary btn-md center-block" style="font-weight: bold" value="Add to Cart" />&nbsp;
+         			<input type="submit" class="btn btn-primary btn-md center-block" style="font-weight: bold" value="${index_AddToCart}" />&nbsp;
                   <a class="btn btn-danger btn-md center-block" style="background: orangered; font-weight: bold"
-					 href="${pageContext.request.contextPath}/product/productdetails?code=${product.code}">Buy Now</a>
+					 href="${pageContext.request.contextPath}/product/productdetails?code=${product.code}">${index_BuyNow}</a>
      			</div>
 </div>
 													</fieldset>
@@ -90,7 +93,7 @@
 								</c:forEach>		
 					</c:when>
 					<c:otherwise>
-						<c:if test="${empty products}"><div class="col-12 text-center"><h1>THERE IS NO ITEMS</h1></div></c:if>
+						<c:if test="${empty products}"><div class="col-12 text-center"><h1>${index_ThereIsNoItems}</h1></div></c:if>
 				</c:otherwise>
 			</c:choose>
 					</div>
@@ -98,20 +101,20 @@
 						<c:choose>
 					<c:when test="${count > product_size}">
 						<div class="col-12 text-center">
-							<b><a class="btn btn-success" style="color:white;border-radius: 15px; font-weight: bold" href="${pageContext.request.contextPath}/products/1">LOAD MORE ITEMS</a></b>
+							<b><a class="btn btn-success" style="color:white;border-radius: 15px; font-weight: bold" href="${pageContext.request.contextPath}/products/1">${index_LoadMoreItems}</a></b>
 						</div>
 					</c:when>
 					<c:otherwise>
 					<c:if test="${pageNo > 0}">
 						<div class="col-sm-12 text-center">
-							<b><a class="btn btn-success" style="color: white;border-radius: 15px; font-weight: bold" href="${nextUrl}">LOAD MORE ITEMS</a></b>&nbsp;
-							<b><a class="btn btn-danger" href="${backUrl}" style="color: white;border-radius: 15px;font-weight: bold; background: #f45c5d">GO BACK</a></b>
+							<b><a class="btn btn-success" style="color: white;border-radius: 15px; font-weight: bold" href="${nextUrl}">${index_LoadMoreItems}</a></b>&nbsp;
+							<b><a class="btn btn-danger" href="${backUrl}" style="color: white;border-radius: 15px;font-weight: bold; background: #f45c5d">${index_GoBack}</a></b>
 						</div>
 					</c:if>
 					<c:if test="${empty products}">
 						<div class="col-12 text-center">
 							<b><a class="btn btn-danger"
-								  href="${header.referer}" style="color: white;border-radius: 15px; font-weight: bold; background: #f45c5d">GO BACK</a></b>
+								  href="${header.referer}" style="color: white;border-radius: 15px; font-weight: bold; background: #f45c5d">${index_GoBack}</a></b>
 						</div>
 					</c:if>
 					</c:otherwise>

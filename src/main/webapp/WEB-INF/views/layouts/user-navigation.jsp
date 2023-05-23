@@ -29,6 +29,10 @@
 							</div>
 						</div>
 					<div class="col-md-6 mt-1 text-white text-right">
+
+						<a style="color:white;font-size:14px;font-weight: bold" href="/change-language?lang=en">EN</a>&nbsp;&nbsp;
+						<a style="color:white;font-size:14px;font-weight: bold" href="/change-language?lang=vi">VI</a>&nbsp;&nbsp;
+
 					<i class="fas fa-phone mr-2" style="font-size:14px;"></i><a style="color:white;font-size:14px;" href="tel:+91 121122000">+91 121 122 000</a>
 				</div>	
 			</div>

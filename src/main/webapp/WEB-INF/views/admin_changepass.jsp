@@ -4,6 +4,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Ebook General Store | Change Password </title>
 	<jsp:include page="layouts/header.jsp"></jsp:include>
 </head>

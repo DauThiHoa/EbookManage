@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-		 pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+		 pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/tags" prefix="spring"%>
 <%@ taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
 
@@ -9,6 +9,8 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<title>Ebook General Store | Login </title>
 	<jsp:include page="layouts/header.jsp"></jsp:include>
 </head>
@@ -48,8 +50,8 @@
 
 <%--Chuyen trang san pham--%>
 				<c:if test="${not empty backUrl}"><center><h4 class="text-center" style="color:red;">Login First</h4><hr></center></c:if>
-<%--			modelAttribute="customerLoginForm => Liên k?t d? li?u bi?u m?u v?i ??i t??ng "customerLoginForm" và cung c?p d? li?u ?ó trong ph??ng th?c
-c?a b? ?i?u khi?n ?? x? lý --%>
+<%--			modelAttribute="customerLoginForm => LiÃªn k?t d? li?u bi?u m?u v?i ??i t??ng "customerLoginForm" vÃ  cung c?p d? li?u ?Ã³ trong ph??ng th?c
+c?a b? ?i?u khi?n ?? x? lÃ½ --%>
 				<form:form action="${pageContext.request.contextPath}/customer/loginCustomer" modelAttribute="customerLoginForm" method="post" class="validatedForm">
 					<div class="contact-form1 form-group">
 						<label class="col-form-label" style="font-weight: bold">Email</label>
