@@ -15,6 +15,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.propertyeditors.StringTrimmerEditor;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.core.env.Environment;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -40,6 +42,9 @@ public class CustomerController {
 //	Ghi nhật ký bằng cách sử dụng khung công tác ghi nhật ký SLF4J
 //	log.info("Message")để ghi thông báo thông tin,
 //	log.error("Error message", exception)ghi thông báo lỗi cùng với một ngoại lệ
+
+	@Autowired
+	private MessageSource messageSource;
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
@@ -76,12 +81,47 @@ public class CustomerController {
 	@GetMapping("/login")
 	public String pageLogin(Customer customer, Model model) {
 		model.addAttribute("customerLoginForm", new Customer());
+
+		String login_Password = messageSource.getMessage("login_Password", null, LocaleContextHolder.getLocale());
+		model.addAttribute("login_Password", login_Password); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+		String login_Login = messageSource.getMessage("login_Login", null, LocaleContextHolder.getLocale());
+		model.addAttribute("login_Login", login_Login);
+		String login_Register = messageSource.getMessage("login_Register", null, LocaleContextHolder.getLocale());
+		model.addAttribute("login_Register", login_Register);
+		String login_ForgotPassword = messageSource.getMessage("login_ForgotPassword", null, LocaleContextHolder.getLocale());
+		model.addAttribute("login_ForgotPassword", login_ForgotPassword);
+
 		return "login";
 	}
 
 	@GetMapping("/register")
 	public String pageRegister(Customer customer, Model model) {
 		model.addAttribute("customerForm", new Customer());
+
+		String register_YourName = messageSource.getMessage("register_YourName", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_YourName", register_YourName); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+		String register_Password = messageSource.getMessage("register_Password", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_Password", register_Password);
+		String register_Phone = messageSource.getMessage("register_Phone", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_Phone", register_Phone);
+		String register_Gender = messageSource.getMessage("register_Gender", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_Gender", register_Gender);
+
+		String register_SelectGender = messageSource.getMessage("register_SelectGender", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_SelectGender", register_SelectGender);
+		String register_Male = messageSource.getMessage("register_Male", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_Male", register_Male);
+		String register_Female = messageSource.getMessage("register_Female", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_Female", register_Female);
+		String register_PinCode = messageSource.getMessage("register_PinCode", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_PinCode", register_PinCode);
+
+		String register_Address = messageSource.getMessage("register_Address", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_Address", register_Address);
+		String register_Register = messageSource.getMessage("register_Register", null, LocaleContextHolder.getLocale());
+		model.addAttribute("register_Register", register_Register);
+
+
 		return "register";
 	}
 
@@ -174,6 +214,31 @@ public class CustomerController {
 //			br => Thong bao neu co the nao dien sai thong tin => Ve trang dang ki
 			if (br.hasErrors()) {
 				log.info("BindingResult Found an error.");
+
+				String register_YourName = messageSource.getMessage("register_YourName", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_YourName", register_YourName); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+				String register_Password = messageSource.getMessage("register_Password", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_Password", register_Password);
+				String register_Phone = messageSource.getMessage("register_Phone", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_Phone", register_Phone);
+				String register_Gender = messageSource.getMessage("register_Gender", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_Gender", register_Gender);
+
+				String register_SelectGender = messageSource.getMessage("register_SelectGender", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_SelectGender", register_SelectGender);
+
+				String register_Male = messageSource.getMessage("register_Male", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_Male", register_Male);
+				String register_Female = messageSource.getMessage("register_Female", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_Female", register_Female);
+				String register_PinCode = messageSource.getMessage("register_PinCode", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_PinCode", register_PinCode);
+
+				String register_Address = messageSource.getMessage("register_Address", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_Address", register_Address);
+				String register_Register = messageSource.getMessage("register_Register", null, LocaleContextHolder.getLocale());
+				model.addAttribute("register_Register", register_Register);
+
 				return "register";
 			} else {
 //				Lấy thông tin của khách hàng (email, tên, địa chỉ, điện thoại, mật khẩu, mã pin) từ đối tượng customer
@@ -200,10 +265,58 @@ public class CustomerController {
 				if (emailExists != null) { // Mail ton tai => Thong bao loi
 					br.rejectValue("email", "error.customer", "This email already exists!");
 					log.info("This email already exists!");
+
+					String register_YourName = messageSource.getMessage("register_YourName", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_YourName", register_YourName); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+					String register_Password = messageSource.getMessage("register_Password", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Password", register_Password);
+					String register_Phone = messageSource.getMessage("register_Phone", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Phone", register_Phone);
+					String register_Gender = messageSource.getMessage("register_Gender", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Gender", register_Gender);
+
+					String register_SelectGender = messageSource.getMessage("register_SelectGender", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_SelectGender", register_SelectGender);
+					String register_Male = messageSource.getMessage("register_Male", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Male", register_Male);
+					String register_Female = messageSource.getMessage("register_Female", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Female", register_Female);
+					String register_PinCode = messageSource.getMessage("register_PinCode", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_PinCode", register_PinCode);
+
+					String register_Address = messageSource.getMessage("register_Address", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Address", register_Address);
+					String register_Register = messageSource.getMessage("register_Register", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Register", register_Register);
+
 					return "register";
 				} else if (phoneExists != null) {
 					br.rejectValue("phone", "error.phone", "This phone already exists!");
 					log.info("This phone already exists!");
+
+					String register_YourName = messageSource.getMessage("register_YourName", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_YourName", register_YourName); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+					String register_Password = messageSource.getMessage("register_Password", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Password", register_Password);
+					String register_Phone = messageSource.getMessage("register_Phone", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Phone", register_Phone);
+					String register_Gender = messageSource.getMessage("register_Gender", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Gender", register_Gender);
+
+					String register_SelectGender = messageSource.getMessage("register_SelectGender", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_SelectGender", register_SelectGender);
+					String register_Male = messageSource.getMessage("register_Male", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Male", register_Male);
+					String register_Female = messageSource.getMessage("register_Female", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Female", register_Female);
+					String register_PinCode = messageSource.getMessage("register_PinCode", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_PinCode", register_PinCode);
+
+					String register_Address = messageSource.getMessage("register_Address", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Address", register_Address);
+					String register_Register = messageSource.getMessage("register_Register", null, LocaleContextHolder.getLocale());
+					model.addAttribute("register_Register", register_Register);
+
 					return "register";
 				} else {
 					log.info("in else, Saving Customer.");
@@ -230,6 +343,30 @@ public class CustomerController {
 			e.printStackTrace();
 			log.error(e.getMessage());
 //			Sai thong tin dang nhap => Ve trang dang ki
+
+			String register_YourName = messageSource.getMessage("register_YourName", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_YourName", register_YourName); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+			String register_Password = messageSource.getMessage("register_Password", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_Password", register_Password);
+			String register_Phone = messageSource.getMessage("register_Phone", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_Phone", register_Phone);
+			String register_Gender = messageSource.getMessage("register_Gender", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_Gender", register_Gender);
+
+			String register_SelectGender = messageSource.getMessage("register_SelectGender", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_SelectGender", register_SelectGender);
+			String register_Male = messageSource.getMessage("register_Male", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_Male", register_Male);
+			String register_Female = messageSource.getMessage("register_Female", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_Female", register_Female);
+			String register_PinCode = messageSource.getMessage("register_PinCode", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_PinCode", register_PinCode);
+
+			String register_Address = messageSource.getMessage("register_Address", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_Address", register_Address);
+			String register_Register = messageSource.getMessage("register_Register", null, LocaleContextHolder.getLocale());
+			model.addAttribute("register_Register", register_Register);
+
 			return "register";
 		}
 	}
@@ -248,6 +385,17 @@ public class CustomerController {
 //				Neu chua dang ki => Thong bao email chua duoc dang ki
 				br.rejectValue("email", "error.customer", "This email is not registered.");
 				log.info("This email is not registered.");
+
+				String login_Password = messageSource.getMessage("login_Password", null, LocaleContextHolder.getLocale());
+				model.addAttribute("login_Password", login_Password); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+				String login_Login = messageSource.getMessage("login_Login", null, LocaleContextHolder.getLocale());
+				model.addAttribute("login_Login", login_Login);
+				String login_Register = messageSource.getMessage("login_Register", null, LocaleContextHolder.getLocale());
+				model.addAttribute("login_Register", login_Register);
+				String login_ForgotPassword = messageSource.getMessage("login_ForgotPassword", null, LocaleContextHolder.getLocale());
+				model.addAttribute("login_ForgotPassword", login_ForgotPassword);
+
+
 				return "login";
 			} else {
 				String encodedPassword = emailExists.getPassword(); // customerService.findCustomerPassword(email);
@@ -298,10 +446,32 @@ public class CustomerController {
 						return "redirect:/home";
 					} else {
 						br.rejectValue("password", "error.customer", "Password mismatch.");
+
+						String login_Password = messageSource.getMessage("login_Password", null, LocaleContextHolder.getLocale());
+						model.addAttribute("login_Password", login_Password); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+						String login_Login = messageSource.getMessage("login_Login", null, LocaleContextHolder.getLocale());
+						model.addAttribute("login_Login", login_Login);
+						String login_Register = messageSource.getMessage("login_Register", null, LocaleContextHolder.getLocale());
+						model.addAttribute("login_Register", login_Register);
+						String login_ForgotPassword = messageSource.getMessage("login_ForgotPassword", null, LocaleContextHolder.getLocale());
+						model.addAttribute("login_ForgotPassword", login_ForgotPassword);
+
+
 						return "login";
 					}
 				} else {
 					br.rejectValue("password", "error.customer", "Password doesn't match.");
+
+					String login_Password = messageSource.getMessage("login_Password", null, LocaleContextHolder.getLocale());
+					model.addAttribute("login_Password", login_Password); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+					String login_Login = messageSource.getMessage("login_Login", null, LocaleContextHolder.getLocale());
+					model.addAttribute("login_Login", login_Login);
+					String login_Register = messageSource.getMessage("login_Register", null, LocaleContextHolder.getLocale());
+					model.addAttribute("login_Register", login_Register);
+					String login_ForgotPassword = messageSource.getMessage("login_ForgotPassword", null, LocaleContextHolder.getLocale());
+					model.addAttribute("login_ForgotPassword", login_ForgotPassword);
+
+
 					return "login";
 				}
 			}
@@ -309,6 +479,17 @@ public class CustomerController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			log.error(e.getMessage());
+
+			String login_Password = messageSource.getMessage("login_Password", null, LocaleContextHolder.getLocale());
+			model.addAttribute("login_Password", login_Password); 	String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+			String login_Login = messageSource.getMessage("login_Login", null, LocaleContextHolder.getLocale());
+			model.addAttribute("login_Login", login_Login);
+			String login_Register = messageSource.getMessage("login_Register", null, LocaleContextHolder.getLocale());
+			model.addAttribute("login_Register", login_Register);
+			String login_ForgotPassword = messageSource.getMessage("login_ForgotPassword", null, LocaleContextHolder.getLocale());
+			model.addAttribute("login_ForgotPassword", login_ForgotPassword);
+
+
 			return "login";
 		}
 	}

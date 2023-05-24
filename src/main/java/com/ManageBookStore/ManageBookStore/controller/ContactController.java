@@ -5,6 +5,7 @@ import java.util.Date;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.MessageSource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -21,6 +22,9 @@ import com.ManageBookStore.ManageBookStore.service.ContactService;
 
 @Controller
 public class ContactController {
+
+	@Autowired
+	private MessageSource messageSource;
 
 	private static Logger log = LoggerFactory.getLogger(ContactController.class);
 

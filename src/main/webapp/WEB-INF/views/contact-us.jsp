@@ -48,7 +48,7 @@
 <%--							<img src="">--%>
 							<img class="img-fluid" src="${pageContext.request.contextPath}/image1/icon-3.png" alt="">
 						</div>
-						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3" style="font-weight: bold; color: #117a8b">Address</h4>
+						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3" style="font-weight: bold; color: #117a8b">${contact_Address}</h4>
 						<p style="font-weight: bold;color:black;">Ebook Store
 							<label style="font-weight: bold;color:black;">Shop No.4 Building No.51/B </label>
 						</p>
@@ -60,7 +60,7 @@
 <%--							<i class="fas fa-phone rounded-circle"></i>--%>
 								<img class="img-fluid" src="${pageContext.request.contextPath}/image1/icon-2.png" alt="">
 						</div>
-						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3"  style="font-weight: bold; color: #117a8b">Call Us</h4>
+						<h4 class="font-weight-bold mt-sm-4 mt-3 mb-3"  style="font-weight: bold; color: #117a8b">${contact_CallUs}</h4>
 						<p style="font-weight: bold;color:black;"><a style="font-weight: bold;color:black;" href="tel:+91121122000">+(91) 121 122 000</a>
 						
 <!-- 							<label>+(91) 121 122 000</label> -->
@@ -88,7 +88,7 @@
 					<c:choose>
 						<c:when test="${not empty email}">
 							<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label" style="font-weight: bold">Name</label>
+							<label class="col-form-label" style="font-weight: bold">${contact_Name}</label>
 							<input type="text" class="form-control" placeholder="Name" disabled="disabled" value="${name}" name="name" id="name" required="required">
 							<p class="error" id="error_name"></p>
 						</div>
@@ -100,7 +100,7 @@
 						</c:when>
 						<c:otherwise>
 							<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label" style="font-weight: bold">Name</label>
+							<label class="col-form-label" style="font-weight: bold">${contact_Name}</label>
 							<input type="text" class="form-control" placeholder="Name" name="name" id="name" required="required">
 							<p class="error" id="error_name"></p>
 						</div>
@@ -112,18 +112,18 @@
 						</c:otherwise>
 					</c:choose>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label" style="font-weight: bold">Subject</label>
+							<label class="col-form-label" style="font-weight: bold">${contact_Subject}</label>
 							<input type="text" class="form-control" placeholder="Subject" name="subject" id="subject" required="required">
 							<p class="error" id="error_subject"></p>
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label" style="font-weight: bold">Message</label>
+							<label class="col-form-label" style="font-weight: bold">${contact_Message}</label>
 							<textarea name="message" class="form-control" placeholder="Message" cols="45" rows="5" id="message" required="required"></textarea>
 							<p class="error" id="error_message"></p>
 						</div>
 					</div>
 					<div class="right-w3l col-md-6">
-						<input type="button" style="font-weight: bold; background: #28a745" class="btn btn-primary form-control" id="submit" value="Submit">
+						<input type="button" style="font-weight: bold; background: #28a745" class="btn btn-primary form-control" id="submit" value="${contact_Submit}">
 					</div>
 				</div>
 			</form>

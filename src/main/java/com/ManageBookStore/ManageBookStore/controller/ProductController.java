@@ -9,6 +9,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.MessageSource;
+import org.springframework.context.i18n.LocaleContextHolder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +30,9 @@ public class ProductController {
 	
 	@Value("${upoadDir}")
 	private String uploadFolder;
+
+	@Autowired
+	private MessageSource messageSource;
 
 	@Autowired
 	private ProductService productService;
@@ -66,6 +71,14 @@ public class ProductController {
 	String show(Model map) {
 		List<Product> product = productService.getAllActiveProducts();
 		map.addAttribute("products", product);
+
+		String index_QuickView = messageSource.getMessage("index_QuickView", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_QuickView", index_QuickView);
+		String index_AddToCart = messageSource.getMessage("index_AddToCart", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_AddToCart", index_AddToCart);
+		String index_BuyNow = messageSource.getMessage("index_BuyNow", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_BuyNow", index_BuyNow);
+
 		return "product_all";
 	}
 

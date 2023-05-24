@@ -50,7 +50,7 @@
 											<div class="men-cart-pro">
 												<div class="inner-men-cart-pro" style="margin-top:-55px;">
 													<a href="${pageContext.request.contextPath}/product/productdetails?code=${product.code}"
-													   style="font-weight: bold" class="link-product-add-cart">Quick View</a>
+													   style="font-weight: bold" class="link-product-add-cart">${index_QuickView}</a>
 												</div>
 											</div>
 										</div>
@@ -77,9 +77,9 @@
 														<input type="hidden" name="cancel_return" value=" " />
 <div class="row">
    	<div class="col-sm-12 text-center">
-         <input type="submit" class="btn btn-primary btn-md center-block" style="font-weight: bold" value="Add to Cart" />&nbsp;
+         <input type="submit" class="btn btn-primary btn-md center-block" style="font-weight: bold" value="${index_AddToCart}" />&nbsp;
          <a class="btn btn-danger btn-md center-block" style="background: orangered; font-weight: bold"
-			href="${pageContext.request.contextPath}/product/productdetails?code=${product.code}">Buy Now</a>
+			href="${pageContext.request.contextPath}/product/productdetails?code=${product.code}">${index_BuyNow}</a>
      </div>
 </div>
 													</fieldset>

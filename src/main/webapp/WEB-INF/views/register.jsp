@@ -52,8 +52,8 @@
 				<div class="contact-grids1 w3agile-6">
 					<div class="row">
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label" style="font-weight: bold">Your Name</label>
-							<form:input path="name" class="form-control" placeholder="Name" id="name" name="Name" required="required" />
+							<label class="col-form-label" style="font-weight: bold">${register_YourName}</label>
+							<form:input path="name" class="form-control" placeholder="Name" id="name" name="${register_YourName}" required="required" />
 							<form:errors path="name" cssStyle="color:red;" cssClass="error"/>
 							<span id="spnName"></span>
 						</div>
@@ -64,42 +64,42 @@
 								<span id="spnEmail"></span>
 							</div>
 							<div class="col-md-6 col-sm-6 contact-form1 form-group">
-								<label class="col-form-label" style="font-weight: bold">Password</label>
-								<form:password path="password" maxlength="64" minlength="6" class="form-control" placeholder="Password" name="Password" id="password" required="required" />
+								<label class="col-form-label" style="font-weight: bold">${register_Password}</label>
+								<form:password path="password" maxlength="64" minlength="6" class="form-control" placeholder="${register_Password}" name="Password" id="password" required="required" />
 								<form:errors path="password" cssStyle="color:red;" cssClass="error"/>
 								<span id="spnPassword"></span>
 							</div>
 							<div class="col-md-6 col-sm-6 contact-form1 form-group">
-								<label class="col-form-label" style="font-weight: bold">Phone</label>
-								<form:input path="phone" class="form-control" maxlength="10" id="phone" placeholder="Phone" name="phone" required="required" />
+								<label class="col-form-label" style="font-weight: bold">${register_Phone}</label>
+								<form:input path="phone" class="form-control" maxlength="10" id="phone" placeholder="${register_Phone}" name="phone" required="required" />
 								<form:errors path="phone" cssStyle="color:red;" cssClass="error"/>
 								<span id="spnPhone"></span>
 							</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label" style="font-weight: bold">Gender</label>
+							<label class="col-form-label" style="font-weight: bold">${register_Gender}</label>
 							<form:select path="gender" name="gender" id="gender" class="form-control" require="required">
-								<form:option value="0" selected="selected">Select Gender</form:option>
-								<form:option value="Male">Male</form:option>
-								<form:option value="Female">Female</form:option>
+								<form:option value="0" selected="selected">${register_SelectGender}</form:option>
+								<form:option value="Male">${register_Male}</form:option>
+								<form:option value="Female">${register_Female}</form:option>
 							</form:select>
 							<form:errors path="gender" cssStyle="color:red;" cssClass="error"/>
 							<span id="spnGender"></span>
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-								<label class="col-form-label" style="font-weight: bold">Pin Code</label>
-								<form:input path="pinCode" class="form-control" maxlength="6" id="pin" placeholder="Pin Code" name="pin" required="required" />
+								<label class="col-form-label" style="font-weight: bold">${register_PinCode}</label>
+								<form:input path="pinCode" class="form-control" maxlength="6" id="pin" placeholder="${register_PinCode}" name="pin" required="required" />
 								<form:errors path="pinCode" cssStyle="color:red;" cssClass="error"/>
 								<span id="spnPin"></span>
 						</div>
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
-							<label class="col-form-label" style="font-weight: bold">Address</label>
-							<form:textarea path="address" class="form-control" id="address" placeholder="Address" rows="4" cols="45" name="address" required="required"></form:textarea>
+							<label class="col-form-label" style="font-weight: bold">${register_Address}</label>
+							<form:textarea path="address" class="form-control" id="address" placeholder="${register_Address}" rows="4" cols="45" name="address" required="required"></form:textarea>
 							<form:errors path="address" cssStyle="color:red;" cssClass="error"/>
 							<span id="spnAddress"></span>
 						</div>	
 					</div>
 					<div class="right-w3l col-md-6">
-						<input type="submit" id="submit"  style="font-weight: bold; background: #28a745" class="form-control" value="Register">
+						<input type="submit" id="submit"  style="font-weight: bold; background: #28a745" class="form-control" value="${register_Register}">
 					</div>	
 				</div>
 			</form:form>

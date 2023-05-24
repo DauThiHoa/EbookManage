@@ -142,7 +142,22 @@ public class LinkController {
 	}
 
 	@GetMapping("/contact")
-	public String contactPage() {
+	public String contactPage( Model map) {
+
+		String contact_Address = messageSource.getMessage("contact_Address", null, LocaleContextHolder.getLocale());
+		map.addAttribute("contact_Address", contact_Address);
+		String contact_CallUs = messageSource.getMessage("contact_CallUs", null, LocaleContextHolder.getLocale());
+		map.addAttribute("contact_CallUs", contact_CallUs);
+		String contact_Name = messageSource.getMessage("contact_Name", null, LocaleContextHolder.getLocale());
+		map.addAttribute("contact_Name", contact_Name);
+
+		String contact_Subject = messageSource.getMessage("contact_Subject", null, LocaleContextHolder.getLocale());
+		map.addAttribute("contact_Subject", contact_Subject);
+		String contact_Message = messageSource.getMessage("contact_Message", null, LocaleContextHolder.getLocale());
+		map.addAttribute("contact_Message", contact_Message);
+		String contact_Submit = messageSource.getMessage("contact_Submit", null, LocaleContextHolder.getLocale());
+		map.addAttribute("contact_Submit", contact_Submit);
+
 		return "contact-us";
 	}
 

@@ -59,16 +59,16 @@ c?a b? ?i?u khi?n ?? x? lý --%>
 						<form:errors path="email" cssStyle="color:red;" cssClass="error"/>
 					</div>
 					<div class="contact-form1 form-group">
-						<label class="col-form-label" style="font-weight: bold">Password</label>
+						<label class="col-form-label" style="font-weight: bold">${login_Password}</label>
 						<form:password path="password" maxlength="64" size="40" minlength="6" class="form-control" placeholder="Password" name="Password" id="password" required="required" />
 						<form:errors path="password" cssStyle="color:red;" cssClass="error"/>
 					</div>
 					<div class="right-w3l">
-						<input type="submit" style="background: #28a745; font-weight: bold" class="form-control btn btn-primary" value="Login">
+						<input type="submit" style="background: #28a745; font-weight: bold" class="form-control btn btn-primary" value="${login_Login}">
 					</div>
 				</form:form>
-				<a href="register" style="color:orangered; font-weight: bold">Register</a>
-				<a href="forgot-password" style="color:orangered; font-weight: bold; float:right;">Forgot Password?</a>
+				<a href="register" style="color:orangered; font-weight: bold">${login_Register}</a>
+				<a href="forgot-password" style="color:orangered; font-weight: bold; float:right;">${login_ForgotPassword}</a>
 			</div>
 		</div>
 	</div>
