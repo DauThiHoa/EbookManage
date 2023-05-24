@@ -47,25 +47,25 @@
 												<ul class="navbar-nav ml-auto text-center mr-xl-5">
 
 <%--													allPriceDesc allPriceAsc allNameDesc allNameAsc--%>
-													<li class="nav-item active mr-lg-2 mb-lg-0 mb-2" style="margin-left: -27%; font-weight: bold; border: 1px solid ; background: lightcyan;">
-														<a class="nav-link" href="${pageContext.request.contextPath}/product/allPriceDesc">${allPriceDesc}
+													<li class="nav-item active mr-lg-2 mb-lg-0 mb-2" style="margin-left: -27%; font-weight: bold;  background: #27a2b6;">
+														<a class="nav-link" style="color:white;" href="${pageContext.request.contextPath}/product/allPriceDesc">${allPriceDesc}
 															<span class="sr-only">(current)</span>
 														</a>
 													</li>
 
 
-													<li class="nav-item mr-lg-2 mb-lg-0 mb-2" style=" font-weight: bold;border: 1px solid ; background: lightcyan;">
-														<a class="nav-link" href="${pageContext.request.contextPath}/product/allPriceAsc">${allPriceAsc}</a>
+													<li class="nav-item mr-lg-2 mb-lg-0 mb-2" style=" font-weight: bold; background: #27a2b6;">
+														<a class="nav-link" style="color:white;" href="${pageContext.request.contextPath}/product/allPriceAsc">${allPriceAsc}</a>
 													</li>
 
 
-													<li class="nav-item mr-lg-2 mb-lg-0 mb-2" style=" font-weight: bold;border: 1px solid ; background: lightcyan;">
-														<a class="nav-link" href="${pageContext.request.contextPath}/product/allNameDesc">${allNameDesc}</a>
+													<li class="nav-item mr-lg-2 mb-lg-0 mb-2" style=" font-weight: bold;  background: #27a2b6;">
+														<a class="nav-link" style="color:white;" href="${pageContext.request.contextPath}/product/allNameDesc">${allNameDesc}</a>
 													</li>
 
 
-													<li class="nav-item" style=" font-weight: bold;border: 1px solid ; background: lightcyan;">
-														<a class="nav-link" href="${pageContext.request.contextPath}/product/allNameAsc">${allNameAsc}</a>
+													<li class="nav-item" style=" font-weight: bold;  background: #27a2b6;">
+														<a class="nav-link" style="color:white;" href="${pageContext.request.contextPath}/product/allNameAsc">${allNameAsc}</a>
 													</li>
 
 
