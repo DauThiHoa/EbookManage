@@ -53,7 +53,7 @@
 					<div class="row">
 						<div class="col-md-6 col-sm-6 contact-form1 form-group">
 							<label class="col-form-label" style="font-weight: bold">${register_YourName}</label>
-							<form:input path="name" class="form-control" placeholder="Name" id="name" name="${register_YourName}" required="required" />
+							<form:input path="name" class="form-control" placeholder="${register_YourName}" id="name" name="name" required="required" />
 							<form:errors path="name" cssStyle="color:red;" cssClass="error"/>
 							<span id="spnName"></span>
 						</div>

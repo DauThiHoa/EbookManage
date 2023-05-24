@@ -1,4 +1,4 @@
-package com.ManageBookStore.ManageBookStore.service;
+package com.ManageBookStore.ManageBookStore.service.Impl;
 
 import com.ManageBookStore.ManageBookStore.entity.Customer;
 import com.ManageBookStore.ManageBookStore.repository.CustomerRepository;

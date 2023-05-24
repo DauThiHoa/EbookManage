@@ -14,6 +14,13 @@ public interface ProductService {
 	List<Product> getAllActiveProducts();
 	List<Product> getProducts(Pageable pageable);
 
+//	findAllActiveProductsOrderByPriceDesc
+//	findAllActiveProductsOrderByPriceAsc findAllActiveProductsOrderByNameDesc findAllActiveProductsOrderByNameAsc
+	List<Product> findAllActiveProductsOrderByPriceDesc();
+	List<Product> findAllActiveProductsOrderByPriceAsc();
+	List<Product> findAllActiveProductsOrderByNameDesc();
+	List<Product> findAllActiveProductsOrderByNameAsc();
+
 //	xem thong tin chi tiet cua san pham
 	public Product getProductByCode(String code);
 

@@ -79,6 +79,132 @@ public class ProductController {
 		String index_BuyNow = messageSource.getMessage("index_BuyNow", null, LocaleContextHolder.getLocale());
 		map.addAttribute("index_BuyNow", index_BuyNow);
 
+//		allPriceDesc allPriceAsc allNameDesc allNameAsc
+		String allPriceDesc = messageSource.getMessage("allPriceDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceDesc", allPriceDesc);
+		String allPriceAsc = messageSource.getMessage("allPriceAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceAsc", allPriceAsc);
+		String allNameDesc = messageSource.getMessage("allNameDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameDesc", allNameDesc);
+		String allNameAsc = messageSource.getMessage("allNameAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameAsc", allNameAsc);
+
+		return "product_all";
+	}
+
+	@GetMapping("/allPriceDesc")
+	String showProductPriceDesc (Model map) {
+		//	findAllActiveProductsOrderByPriceDesc findAllActiveProductsOrderByPriceAsc
+		// findAllActiveProductsOrderByNameDesc findAllActiveProductsOrderByNameAsc
+
+		List<Product> product = productService.findAllActiveProductsOrderByPriceDesc();
+		map.addAttribute("products", product);
+
+		String index_QuickView = messageSource.getMessage("index_QuickView", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_QuickView", index_QuickView);
+		String index_AddToCart = messageSource.getMessage("index_AddToCart", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_AddToCart", index_AddToCart);
+		String index_BuyNow = messageSource.getMessage("index_BuyNow", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_BuyNow", index_BuyNow);
+
+
+//		allPriceDesc allPriceAsc allNameDesc allNameAsc
+		String allPriceDesc = messageSource.getMessage("allPriceDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceDesc", allPriceDesc);
+		String allPriceAsc = messageSource.getMessage("allPriceAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceAsc", allPriceAsc);
+		String allNameDesc = messageSource.getMessage("allNameDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameDesc", allNameDesc);
+		String allNameAsc = messageSource.getMessage("allNameAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameAsc", allNameAsc);
+
+		return "product_all";
+	}
+
+	@GetMapping("/allPriceAsc")
+	String showProductPriceAsc (Model map) {
+		//	findAllActiveProductsOrderByPriceDesc findAllActiveProductsOrderByPriceAsc
+		// findAllActiveProductsOrderByNameDesc findAllActiveProductsOrderByNameAsc
+
+		List<Product> product = productService.findAllActiveProductsOrderByPriceAsc();
+		map.addAttribute("products", product);
+
+		String index_QuickView = messageSource.getMessage("index_QuickView", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_QuickView", index_QuickView);
+		String index_AddToCart = messageSource.getMessage("index_AddToCart", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_AddToCart", index_AddToCart);
+		String index_BuyNow = messageSource.getMessage("index_BuyNow", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_BuyNow", index_BuyNow);
+
+
+
+//		allPriceDesc allPriceAsc allNameDesc allNameAsc
+		String allPriceDesc = messageSource.getMessage("allPriceDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceDesc", allPriceDesc);
+		String allPriceAsc = messageSource.getMessage("allPriceAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceAsc", allPriceAsc);
+		String allNameDesc = messageSource.getMessage("allNameDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameDesc", allNameDesc);
+		String allNameAsc = messageSource.getMessage("allNameAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameAsc", allNameAsc);
+
+		return "product_all";
+	}
+
+	@GetMapping("/allNameDesc")
+	String showProductNameDesc (Model map) {
+		//	findAllActiveProductsOrderByPriceDesc findAllActiveProductsOrderByPriceAsc
+		// findAllActiveProductsOrderByNameDesc findAllActiveProductsOrderByNameAsc
+
+		List<Product> product = productService.findAllActiveProductsOrderByNameDesc();
+		map.addAttribute("products", product);
+
+		String index_QuickView = messageSource.getMessage("index_QuickView", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_QuickView", index_QuickView);
+		String index_AddToCart = messageSource.getMessage("index_AddToCart", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_AddToCart", index_AddToCart);
+		String index_BuyNow = messageSource.getMessage("index_BuyNow", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_BuyNow", index_BuyNow);
+
+
+//		allPriceDesc allPriceAsc allNameDesc allNameAsc
+		String allPriceDesc = messageSource.getMessage("allPriceDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceDesc", allPriceDesc);
+		String allPriceAsc = messageSource.getMessage("allPriceAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceAsc", allPriceAsc);
+		String allNameDesc = messageSource.getMessage("allNameDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameDesc", allNameDesc);
+		String allNameAsc = messageSource.getMessage("allNameAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameAsc", allNameAsc);
+
+		return "product_all";
+	}
+
+	@GetMapping("/allNameAsc")
+	String showProductNameAsc (Model map) {
+		//	findAllActiveProductsOrderByPriceDesc findAllActiveProductsOrderByPriceAsc
+		// findAllActiveProductsOrderByNameDesc findAllActiveProductsOrderByNameAsc
+
+		List<Product> product = productService.findAllActiveProductsOrderByNameAsc();
+		map.addAttribute("products", product);
+
+		String index_QuickView = messageSource.getMessage("index_QuickView", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_QuickView", index_QuickView);
+		String index_AddToCart = messageSource.getMessage("index_AddToCart", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_AddToCart", index_AddToCart);
+		String index_BuyNow = messageSource.getMessage("index_BuyNow", null, LocaleContextHolder.getLocale());
+		map.addAttribute("index_BuyNow", index_BuyNow);
+
+//		allPriceDesc allPriceAsc allNameDesc allNameAsc
+		String allPriceDesc = messageSource.getMessage("allPriceDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceDesc", allPriceDesc);
+		String allPriceAsc = messageSource.getMessage("allPriceAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allPriceAsc", allPriceAsc);
+		String allNameDesc = messageSource.getMessage("allNameDesc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameDesc", allNameDesc);
+		String allNameAsc = messageSource.getMessage("allNameAsc", null, LocaleContextHolder.getLocale());
+		map.addAttribute("allNameAsc", allNameAsc);
+
 		return "product_all";
 	}
 
@@ -90,7 +216,28 @@ public class ProductController {
 				List<Product> products = productService.searchProducts(keyword.trim());
 				log.info("products :: "+products);
 //				Them san pham vao Model => Chuyen trang search
+
 				model.addAttribute("products", products);
+
+				String index_QuickView = messageSource.getMessage("index_QuickView", null, LocaleContextHolder.getLocale());
+				model.addAttribute("index_QuickView", index_QuickView);
+				String index_AddToCart = messageSource.getMessage("index_AddToCart", null, LocaleContextHolder.getLocale());
+				model.addAttribute("index_AddToCart", index_AddToCart);
+				String index_BuyNow = messageSource.getMessage("index_BuyNow", null, LocaleContextHolder.getLocale());
+				model.addAttribute("index_BuyNow", index_BuyNow);
+
+
+//		allPriceDesc allPriceAsc allNameDesc allNameAsc
+				String allPriceDesc = messageSource.getMessage("allPriceDesc", null, LocaleContextHolder.getLocale());
+				model.addAttribute("allPriceDesc", allPriceDesc);
+				String allPriceAsc = messageSource.getMessage("allPriceAsc", null, LocaleContextHolder.getLocale());
+				model.addAttribute("allPriceAsc", allPriceAsc);
+				String allNameDesc = messageSource.getMessage("allNameDesc", null, LocaleContextHolder.getLocale());
+				model.addAttribute("allNameDesc", allNameDesc);
+				String allNameAsc = messageSource.getMessage("allNameAsc", null, LocaleContextHolder.getLocale());
+				model.addAttribute("allNameAsc", allNameAsc);
+
+
 				return "search";
 			}
 //			Neu khong co kq phu hop chuyen sang trang home

@@ -23,7 +23,24 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
 	@Query(value = "select p from Product p where p.active=true order by p.createDate desc")
 	List<Product> findAllActiveProducts();
 
-//	trả về một danh sách các sản phẩm được sắp xếp theo ngày tạo theo thứ tự giảm dần, giới hạn ở kích thước được chỉ
+//	sắp xếp sản phẩm giảm dần theo giá
+	@Query(value = "SELECT p FROM Product p WHERE p.active = true ORDER BY p.price DESC")
+	List<Product> findAllActiveProductsOrderByPriceDesc();
+
+	//	sắp xếp sản phẩm tăng dần theo giá
+	@Query(value = "SELECT p FROM Product p WHERE p.active = true ORDER BY p.price ASC")
+	List<Product> findAllActiveProductsOrderByPriceAsc();
+
+	//	sắp xếp sản phẩm giảm dần theo tên
+	@Query(value = "SELECT p FROM Product p WHERE p.active = true ORDER BY p.name DESC")
+	List<Product> findAllActiveProductsOrderByNameDesc();
+
+	//	sắp xếp sản phẩm tăng dần theo tên
+	@Query(value = "SELECT p FROM Product p WHERE p.active = true ORDER BY p.name ASC")
+	List<Product> findAllActiveProductsOrderByNameAsc();
+//	findAllActiveProductsOrderByPriceAsc findAllActiveProductsOrderByNameDesc findAllActiveProductsOrderByNameAsc
+
+	//	trả về một danh sách các sản phẩm được sắp xếp theo ngày tạo theo thứ tự giảm dần, giới hạn ở kích thước được chỉ
 //	định trong đối tượng Pageable.
 	@Query(value = "select p from Product p order by p.createDate desc")
 	List<Product> findProducts(Pageable pageable);

@@ -44,6 +44,8 @@
 	</div>
 	<!-- shop locator (popup) -->
 	<!-- //header-bottom -->
+
+
 <!-- navigation -->
 	<div class="navbar-inner">
 		<div class="container">

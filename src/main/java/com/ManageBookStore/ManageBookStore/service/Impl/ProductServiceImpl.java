@@ -49,6 +49,25 @@ public class ProductServiceImpl implements ProductService {
 		return productRepository.findSearchedProducts(name);
 	}
 
+	//	findAllActiveProductsOrderByPriceAsc findAllActiveProductsOrderByNameDesc findAllActiveProductsOrderByNameAsc
+	@Override
+	public List<Product> findAllActiveProductsOrderByPriceDesc() {
+		return productRepository.findAllActiveProductsOrderByPriceDesc();
+	}
+	@Override
+	public List<Product> findAllActiveProductsOrderByPriceAsc() {
+		return productRepository.findAllActiveProductsOrderByPriceAsc();
+	}
+	@Override
+	public List<Product> findAllActiveProductsOrderByNameDesc() {
+		return productRepository.findAllActiveProductsOrderByNameDesc();
+	}
+	@Override
+	public List<Product> findAllActiveProductsOrderByNameAsc() {
+		return productRepository.findAllActiveProductsOrderByNameAsc();
+	}
+
+
 	@Override
 	public void updateProductByCode(String name, String description, String imageData, double mrpPrice, double price, boolean active, String code) {
 		productRepository.updateProduct(name, description, imageData, mrpPrice, price, active, code);
